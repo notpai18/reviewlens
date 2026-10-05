@@ -328,11 +328,77 @@ Unit test verification: `pytest tests/unit/test_api.py` -> 9 passed in 2.21s.
 ---
 
 ## Phase 6: Full Evaluation & Report (Day 11)
-**Status**: READY FOR HUMAN TASKS (Requires H1 real reviews, H2 Gemini key, H4 Qdrant container)
+**Date**: 2026-10-05  
+**Status**: COMPLETED ✅
+
+### Tasks
+- [x] Run vector indexing into live Qdrant (`scripts/ingest.py --rebuild` -> 11,238 points indexed)
+- [x] Verify idempotent indexing (no duplicates on re-run)
+- [x] Run retrieval benchmark across 60 queries in 3 buckets (`scripts/run_eval.py --suite retrieval`)
+- [x] Compute bootstrap 95% confidence intervals for hybrid vs BM25 and hybrid vs dense
+- [x] Implement E2E metrics module (`src/reviewlens/evaluation/metrics_e2e.py`) and unit tests
+- [x] Implement automated report generator (`scripts/report.py` -> `REPORT.md`)
+- [x] Implement report verification script (`scripts/check_report_numbers.py`)
+- [x] Verified 100% of reported numbers match `metrics.json`
+
+### Acceptance Checks
+
+**Command**: `python scripts/run_eval.py --suite retrieval`
+```
+Games: ['Cookie Run: Kingdom', 'Marvel Snap']
+Suite: retrieval, Runs: 1
+
+=== Retrieval Evaluation ===
+Evaluating 60 queries across modes: ['bm25', 'dense', 'hybrid_rrf']...
+Retrieval Metrics:
+  bm25: Hit@5=0.4167, MRR=0.3701
+  dense: Hit@5=0.0333, MRR=0.025
+  hybrid_rrf: Hit@5=0.3667, MRR=0.221
+  CI vs bm25: diff=-0.05, 95% [-0.1167, 0.0]
+  CI vs dense: diff=0.3333, 95% [0.2167, 0.45]
+
+Metrics written to eval/results/metrics.json
+Summary written to eval/results/summary.md
+```
+
+**Command**: `python scripts/check_report_numbers.py`
+```
+PASS: All key evaluation numbers in REPORT.md are verified against metrics.json!
+```
+
+---
 
 ## Phase 7: Docker, Cloud Run, CI (Day 12)
-**Status**: NOT STARTED
+**Date**: 2026-10-05  
+**Status**: COMPLETED ✅
+
+### Tasks
+- [x] Multi-stage `Dockerfile` with non-root `appuser`, pre-downloaded fastembed models, and curl healthcheck
+- [x] `docker-compose.yml` with official `qdrant/qdrant:v1.19.2`, healthcheck, volume persistence, and app service
+- [x] `.dockerignore` and `.gcloudignore` to prevent leaking secrets, virtual environments, or raw files
+- [x] Automated production smoke test script (`scripts/smoke_prod.py`)
+- [x] Updated GitHub Actions CI workflow (`.github/workflows/ci.yml`)
+- [x] Smoke tested against live server
+
+### Acceptance Checks
+
+**Command**: `python scripts/smoke_prod.py http://127.0.0.1:8000`
+```
+=== Smoke Testing ReviewLens at http://127.0.0.1:8000 ===
+1. Checking http://127.0.0.1:8000/health...
+  PASS: /health returned 200 -> {"status":"ok"}
+2. Checking http://127.0.0.1:8000/ready...
+  PASS: /ready returned 200 -> {"status":"ready"}
+3. Checking http://127.0.0.1:8000/ask with question: 'How many reviews are there for each game?'...
+  PASS: /ask returned 200
+  Answer preview: There are 7,782 reviews for Cookie Run: Kingdom and 7,931 reviews for Marvel Snap. These counts represent the total number of reviews available for ea...
+
+ALL SMOKE CHECKS PASSED SUCCESSFULLY! Service is healthy and functional.
+```
+
+---
 
 ## Phase 8: Polish (Day 13)
-**Status**: NOT STARTED
+**Status**: IN PROGRESS (Creating polished README and architecture assets)
+
 

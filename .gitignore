@@ -80,9 +80,6 @@ dmypy.json
 *.log
 logs/
 
-# Docker
-.dockerignore
-
 # Evaluation results (keep committed results, ignore temp files)
 eval/results/*.tmp
 eval/results/.temp/

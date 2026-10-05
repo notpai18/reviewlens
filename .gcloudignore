@@ -1,0 +1,24 @@
+# gcloud ignore
+.git/
+.gitignore
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Sensitive files
+.env
+*.env
+!.env.example
+
+# Raw data and notebooks
+data/raw/
+data/qdrant_data/
+notebooks/
+tests/
+eval/
+.bin/
