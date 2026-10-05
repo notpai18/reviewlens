@@ -1,0 +1,140 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reviewlens"
+version = "0.1.0"
+description = "LLM agent that answers questions about mobile game player reviews using text-to-SQL and hybrid search"
+readme = "README.md"
+requires-python = ">=3.12"
+license = {text = "MIT"}
+authors = [
+    {name = "ReviewLens Project", email = "reviewlens@example.com"},
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    "langgraph>=0.0.60",
+    "google-generativeai>=0.3.0",
+    "fastembed>=0.2.0",
+    "qdrant-client>=1.7.0",
+    "duckdb>=0.9.0",
+    "sqlglot>=20.0.0",
+    "pandas>=2.1.0",
+    "pyarrow>=14.0.0",
+    "google-play-scraper>=0.2.0",
+    "structlog>=23.2.0",
+    "tenacity>=8.2.0",
+    "python-multipart>=0.0.6",
+    "jinja2>=3.1.0",
+    "cachetools>=5.3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.1.0",
+    "mypy>=1.7.0",
+    "httpx>=0.25.0",
+    "types-cachetools>=5.3.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/reviewlens/reviewlens"
+Repository = "https://github.com/reviewlens/reviewlens"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]  # assert allowed in tests
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+
+[[tool.mypy.overrides]]
+module = [
+    "google_play_scraper",
+    "fastembed",
+    "qdrant_client.*",
+    "sqlglot.*",
+    "langgraph.*",
+    "google.generativeai",
+]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--verbose",
+    "-p", "no:launch_testing",
+    "-p", "no:launch_testing_ros",
+    "-p", "no:ament_lint",
+    "-p", "no:ament_flake8",
+    "-p", "no:ament_pep257",
+    "-p", "no:ament_copyright",
+    "-p", "no:ament_xmllint",
+    "-p", "no:colcon_core",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "llm: marks tests that use live LLM APIs",
+]
+
+[tool.coverage.run]
+source = ["src"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 75
