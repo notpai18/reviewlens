@@ -19,6 +19,9 @@ RULES
 KNOWN DATA
 {meta_text}
 
+QUESTION:
+{question}
+
 HISTORY
 {history_text}
 

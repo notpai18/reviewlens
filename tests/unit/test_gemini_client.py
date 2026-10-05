@@ -277,7 +277,7 @@ def test_disk_cache_ignores_corrupt_entries(tmp_path: Path) -> None:
 def test_corrupt_structured_cache_entry_is_recomputed(tmp_path: Path) -> None:
     cache = DiskCache(tmp_path)
     key = cache_key(
-        model="gemini-2.0-flash-exp", system="s", prompt="p", schema_name="Answer", temperature=0.0
+        model="gemini-2.5-flash-lite", system="s", prompt="p", schema_name="Answer", temperature=0.0
     )
     cache.put(key, {"data": {"wrong": "shape"}})
     client = ScriptedClient([_resp('{"value": "ok", "count": 1}')])
@@ -294,7 +294,7 @@ def test_corrupt_structured_cache_entry_is_recomputed(tmp_path: Path) -> None:
 def test_model_name_property_and_empty_text() -> None:
     client = ScriptedClient([SimpleNamespace(text=None, usage_metadata=None)])
     llm = make_llm(client)
-    assert llm.model_name == "gemini-2.0-flash-exp"
+    assert llm.model_name == "gemini-2.5-flash-lite"
     res = run(llm.generate_text(system="s", prompt="p"))
     assert res.text == ""
     assert res.prompt_tokens == 0

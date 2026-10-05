@@ -25,7 +25,7 @@ def test_settings():
     return Settings(
         app_env="test",
         gemini_api_key="test_key_12345",
-        gemini_model="gemini-2.0-flash-exp",
+        gemini_model="gemini-2.5-flash-lite",
         llm_rpm_limit=10,
         llm_timeout_s=5,
     )

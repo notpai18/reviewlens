@@ -149,7 +149,12 @@ async def _cli(question: str) -> int:
     else:
         ctx = make_context(build_components(settings), settings)
     print(f"\nQuestion: {question}\n")
-    result = await run_question(ctx, question)
+    try:
+        result = await run_question(ctx, question)
+    except TimeoutError:
+        print("=== ERROR ===")
+        print(f"Agent execution timed out after {ctx.settings.agent_timeout_s} seconds.")
+        return 1
 
     ans = result.get("final_answer")
     print("=== ANSWER ===")

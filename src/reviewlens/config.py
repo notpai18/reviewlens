@@ -23,7 +23,7 @@ class Settings(BaseSettings):
 
     # LLM Configuration
     gemini_api_key: str = Field(default="", description="Google Gemini API key")
-    gemini_model: str = Field(default="gemini-2.0-flash-exp", description="Gemini model ID")
+    gemini_model: str = Field(default="gemini-2.5-flash-lite", description="Gemini model ID")
     llm_rpm_limit: int = Field(default=10, description="LLM requests per minute limit")
     llm_timeout_s: int = Field(default=45, description="LLM request timeout in seconds")
 

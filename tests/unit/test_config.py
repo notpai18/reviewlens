@@ -30,7 +30,7 @@ def test_settings_defaults():
 
     settings = Settings()
 
-    assert settings.gemini_model == "gemini-2.0-flash-exp"
+    assert settings.gemini_model == "gemini-2.5-flash-lite"
     assert settings.llm_timeout_s == 45
     assert settings.duckdb_path.name == "reviewlens.duckdb"
     assert settings.qdrant_url == "http://localhost:6333"

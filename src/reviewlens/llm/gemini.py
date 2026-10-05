@@ -97,7 +97,7 @@ class GeminiLLM:
     def __init__(
         self,
         api_key: str = "",
-        model: str = "gemini-2.0-flash-exp",
+        model: str = "gemini-2.5-flash-lite",
         rpm_limit: int = 10,
         timeout_s: int = 45,
         *,
