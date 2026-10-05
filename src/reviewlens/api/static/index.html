@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReviewLens Demo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.2/marked.min.js"></script>
+    <style>
+        :root {
+            --bg-color: #f9f9f9;
+            --text-color: #333;
+            --accent-color: #007bff;
+            --card-bg: #fff;
+            --border-color: #eee;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1a1a1a;
+                --text-color: #f0f0f0;
+                --accent-color: #4da3ff;
+                --card-bg: #2d2d2d;
+                --border-color: #444;
+            }
+        }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        #ask-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+        button {
+            padding: 10px 20px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .chip {
+            padding: 6px 12px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        .chip:hover {
+            border-color: var(--accent-color);
+        }
+        .result-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .citation {
+            font-size: 0.85em;
+            background: #eef;
+            color: #33a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 4px;
+        }
+        @media (prefers-color-scheme: dark) {
+            .citation {
+                background: #334;
+                color: #aaf;
+            }
+        }
+        details {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+        pre {
+            background: #222;
+            color: #0f0;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .loader {
+            display: none;
+            font-style: italic;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ReviewLens Demo</h1>
+        
+        <div class="chips">
+            <div class="chip" onclick="setQuery('What is the lowest rated version?')">What is the lowest rated version?</div>
+            <div class="chip" onclick="setQuery('What are players saying about the combat?')">What are players saying about the combat?</div>
+            <div class="chip" onclick="setQuery('How many 5 star reviews do we have?')">How many 5 star reviews do we have?</div>
+            <div class="chip" onclick="setQuery('What do people complain about in version 1.2?')">What do people complain about in version 1.2?</div>
+            <div class="chip" onclick="setQuery('Are there any bugs mentioned recently?')">Are there any bugs mentioned recently?</div>
+        </div>
+
+        <form id="ask-form">
+            <input type="text" id="question" placeholder="Ask a question about reviews..." required>
+            <button type="submit">Ask</button>
+        </form>
+
+        <div id="loader" class="loader">Thinking...</div>
+        
+        <div id="result" class="result-card" style="display: none;">
+            <div id="answer-content"></div>
+            
+            <details id="evidence-section">
+                <summary>Evidence & Trace</summary>
+                <div id="evidence-content"></div>
+            </details>
+        </div>
+    </div>
+
+    <script>
+        function setQuery(q) {
+            document.getElementById('question').value = q;
+        }
+
+        document.getElementById('ask-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const q = document.getElementById('question').value;
+            if (!q) return;
+
+            document.getElementById('loader').style.display = 'block';
+            document.getElementById('result').style.display = 'none';
+
+            try {
+                const res = await fetch('/ask', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        question: q,
+                        options: { include_trace: true }
+                    })
+                });
+                
+                const data = await res.json();
+                
+                if (!res.ok) {
+                    alert('Error: ' + (data.error?.message || 'Unknown error'));
+                    return;
+                }
+
+                document.getElementById('result').style.display = 'block';
+                
+                // Format answer
+                let ansHtml = marked.parse(data.answer_markdown);
+                
+                // Add citations if available
+                if (data.citations && data.citations.length > 0) {
+                    ansHtml += '<p><strong>Citations:</strong></p><div>';
+                    data.citations.forEach(c => {
+                        ansHtml += `<span class="citation" title="${c.snippet || c.label || ''}">${c.id}</span>`;
+                    });
+                    ansHtml += '</div>';
+                }
+                
+                document.getElementById('answer-content').innerHTML = ansHtml;
+
+                // Format evidence
+                let evHtml = '';
+                if (data.sql && data.sql.length > 0) {
+                    evHtml += '<h4>SQL</h4>';
+                    data.sql.forEach(s => {
+                        evHtml += `<pre><code>${s.query}</code></pre>`;
+                        if (s.rows_preview && s.rows_preview.length > 0) {
+                            evHtml += `<p>Preview rows: ${JSON.stringify(s.rows_preview)}</p>`;
+                        }
+                    });
+                }
+                if (data.retrieved && data.retrieved.length > 0) {
+                    evHtml += '<h4>Retrieved Reviews</h4><ul>';
+                    data.retrieved.forEach(r => {
+                        evHtml += `<li><strong>${r.review_id}</strong> (score: ${r.score.toFixed(2)}): ${r.snippet}</li>`;
+                    });
+                    evHtml += '</ul>';
+                }
+                if (data.trace) {
+                    evHtml += '<h4>Trace</h4><ul>';
+                    data.trace.forEach(t => {
+                        evHtml += `<li><strong>${t.node}</strong> (${t.duration_ms}ms): ${t.summary}</li>`;
+                    });
+                    evHtml += '</ul>';
+                }
+                document.getElementById('evidence-content').innerHTML = evHtml;
+
+            } catch (err) {
+                alert('Request failed: ' + err.message);
+            } finally {
+                document.getElementById('loader').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
