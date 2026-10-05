@@ -1,0 +1,47 @@
+# Few-shot examples for SQL generation.
+# These must be DISJOINT from the 30 golden evaluation questions.
+# A test checks cosine similarity < 0.85 between any few-shot and any golden question.
+
+- q: "How many reviews were posted on each day of the week?"
+  sql: |
+    SELECT DAYNAME(review_date) AS weekday, COUNT(*) AS reviews
+    FROM reviews
+    GROUP BY 1
+    ORDER BY reviews DESC
+
+- q: "What is the average review length in words by star rating?"
+  sql: |
+    SELECT rating, ROUND(AVG(content_words), 1) AS avg_words
+    FROM reviews
+    GROUP BY rating
+    ORDER BY rating
+
+- q: "Which 3 days had the most reviews?"
+  sql: |
+    SELECT review_date, COUNT(*) AS reviews
+    FROM reviews
+    GROUP BY review_date
+    ORDER BY reviews DESC
+    LIMIT 3
+
+- q: "How many reviews with more than 10 thumbs up does each game have?"
+  sql: |
+    SELECT game, COUNT(*) AS popular_reviews
+    FROM reviews
+    WHERE thumbs_up > 10
+    GROUP BY game
+    ORDER BY popular_reviews DESC
+
+- q: "What is the median number of thumbs up per game?"
+  sql: |
+    SELECT game, MEDIAN(thumbs_up) AS median_thumbs_up
+    FROM reviews
+    GROUP BY game
+
+- q: "How many distinct app versions appear for each game?"
+  sql: |
+    SELECT game, COUNT(DISTINCT app_version) AS versions
+    FROM reviews
+    WHERE app_version IS NOT NULL
+    GROUP BY game
+    ORDER BY versions DESC

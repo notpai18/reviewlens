@@ -1,0 +1,69 @@
+table: reviews
+description: >
+  Player reviews of two mobile games scraped from Google Play. Each row is
+  one review. Used by text-to-SQL to answer quantitative questions about ratings,
+  trends, versions, and keyword frequencies.
+
+columns:
+  - name: review_id
+    type: VARCHAR
+    nullable: false
+    description: Unique identifier for the review (original Google Play review ID as string).
+
+  - name: game
+    type: VARCHAR
+    nullable: false
+    description: Display name of the game this review belongs to. Must match exactly.
+    # Actual values come from meta.json at runtime — not hardcoded here.
+
+  - name: review_date
+    type: DATE
+    nullable: false
+    description: >
+      UTC date of the review. Use for date filters and time-series aggregations.
+      DATE_TRUNC('month', review_date) for monthly grouping.
+
+  - name: rating
+    type: INTEGER
+    nullable: false
+    description: Star rating given by the reviewer.
+    allowed_values: [1, 2, 3, 4, 5]
+
+  - name: thumbs_up
+    type: INTEGER
+    nullable: false
+    description: Number of helpful votes the review received from other users.
+
+  - name: app_version
+    type: VARCHAR
+    nullable: true
+    description: >
+      App version string at time of review (e.g. "57.2.0"). Often NULL —
+      always exclude NULLs when grouping by version (WHERE app_version IS NOT NULL).
+
+  - name: content
+    type: VARCHAR
+    nullable: false
+    description: >
+      Cleaned review text. Use ILIKE for case-insensitive substring search.
+      For whole-word matching use regexp_matches(content, '\bword\b', 'i').
+
+  - name: content_words
+    type: INTEGER
+    nullable: false
+    description: Number of whitespace-separated tokens in the cleaned review text.
+
+  - name: dev_replied
+    type: BOOLEAN
+    nullable: false
+    description: >
+      True if the developer posted a reply to this review.
+      Use AVG(dev_replied::INT) to get the reply rate.
+
+notes:
+  - "Use bare table name `reviews` — no schema prefix."
+  - "Game names must match exactly as they appear in meta.json."
+  - "Relative dates like 'last 30 days' are relative to the game's date_max in meta.json, not today."
+  - "app_version is often NULL; always filter or handle NULLs explicitly when using it."
+  - "Use ROUND(value, 2) for percentages and averages."
+  - "Add ORDER BY for all ranking and time-series queries."

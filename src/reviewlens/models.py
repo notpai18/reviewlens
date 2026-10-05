@@ -41,8 +41,8 @@ class Filters(BaseModel):
     """Search and query filters."""
 
     game: str | None = None
-    rating_min: int | None = Field(default=None, ge=1, le=5)
-    rating_max: int | None = Field(default=None, ge=1, le=5)
+    rating_min: int | None = None
+    rating_max: int | None = None
     date_from: dt_date | None = None
     date_to: dt_date | None = None
     app_versions: list[str] | None = None

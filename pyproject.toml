@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "reviewlens"
 version = "0.1.0"
 description = "LLM agent that answers questions about mobile game player reviews using text-to-SQL and hybrid search"
-readme = "README.md"
+readme = "readme.md"
 requires-python = ">=3.12"
 license = {text = "MIT"}
 authors = [
@@ -26,7 +26,8 @@ dependencies = [
     "pydantic>=2.5.0",
     "pydantic-settings>=2.1.0",
     "langgraph>=0.0.60",
-    "google-generativeai>=0.3.0",
+    "google-genai>=1.0.0",
+    "pyyaml>=6.0",
     "fastembed>=0.2.0",
     "qdrant-client>=1.7.0",
     "duckdb>=0.9.0",
@@ -50,6 +51,7 @@ dev = [
     "mypy>=1.7.0",
     "httpx>=0.25.0",
     "types-cachetools>=5.3.0",
+    "types-PyYAML>=6.0",
 ]
 
 [project.urls]
@@ -100,10 +102,14 @@ warn_no_return = true
 module = [
     "google_play_scraper",
     "fastembed",
+    "fastembed.*",
     "qdrant_client.*",
     "sqlglot.*",
     "langgraph.*",
-    "google.generativeai",
+    "pandas",
+    "pandas.*",
+    "pyarrow",
+    "pyarrow.*",
 ]
 ignore_missing_imports = true
 
