@@ -96,7 +96,7 @@ class GeminiLLM:
 
     def __init__(
         self,
-        api_key: str = "",
+        api_key: str | list[str] = "",
         model: str = "gemini-2.5-flash-lite",
         rpm_limit: int = 10,
         timeout_s: int = 45,
@@ -108,7 +108,21 @@ class GeminiLLM:
         backoff_initial: float = 1.0,
         backoff_jitter: float = 1.0,
     ) -> None:
-        self._client = client if client is not None else genai.Client(api_key=api_key)
+        self._keys: list[str] = []
+        if isinstance(api_key, list):
+            self._keys = [k.strip() for k in api_key if k.strip()]
+        elif isinstance(api_key, str) and api_key.strip():
+            self._keys = [k.strip() for k in api_key.split(",") if k.strip()]
+
+        if client is not None:
+            self._clients = [client]
+        elif self._keys:
+            self._clients = [genai.Client(api_key=k) for k in self._keys]
+        else:
+            self._clients = [genai.Client(api_key="")]
+
+        self._active_key_idx = 0
+        self._client = self._clients[0]
         self._model = model
         self._timeout_s = timeout_s
         self._bucket = _TokenBucket(rpm_limit)
@@ -128,17 +142,29 @@ class GeminiLLM:
     ) -> tuple[str, int, int]:
         await self._bucket.acquire()
         async with self._semaphore:
-            response = await asyncio.wait_for(
-                self._client.aio.models.generate_content(
-                    model=self._model, contents=prompt, config=config
-                ),
-                timeout=self._timeout_s,
-            )
-        text = response.text or ""
-        um = getattr(response, "usage_metadata", None)
-        pt = int(getattr(um, "prompt_token_count", 0) or 0)
-        ct = int(getattr(um, "candidates_token_count", 0) or 0)
-        return text, pt, ct
+            num_clients = len(self._clients)
+            for attempt in range(num_clients):
+                active_client = self._clients[self._active_key_idx]
+                try:
+                    response = await asyncio.wait_for(
+                        active_client.aio.models.generate_content(
+                            model=self._model, contents=prompt, config=config
+                        ),
+                        timeout=self._timeout_s,
+                    )
+                    text = response.text or ""
+                    um = getattr(response, "usage_metadata", None)
+                    pt = int(getattr(um, "prompt_token_count", 0) or 0)
+                    ct = int(getattr(um, "candidates_token_count", 0) or 0)
+                    return text, pt, ct
+                except genai_errors.APIError as e:
+                    code = getattr(e, "code", None)
+                    if code == 429 and num_clients > 1 and attempt < num_clients - 1:
+                        self._active_key_idx = (self._active_key_idx + 1) % num_clients
+                        self._client = self._clients[self._active_key_idx]
+                        continue
+                    raise
+            raise RuntimeError("All configured clients failed.")
 
     async def _call(
         self, prompt: str, config: genai_types.GenerateContentConfig

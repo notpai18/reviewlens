@@ -50,12 +50,13 @@ class Components:
 
 
 def build_llm(settings: Settings) -> Any:
-    if not settings.gemini_api_key:
+    keys = settings.api_keys
+    if not keys:
         return UnconfiguredLLM()
     from reviewlens.llm.gemini import GeminiLLM
 
     return GeminiLLM(
-        api_key=settings.gemini_api_key,
+        api_key=keys,
         model=settings.gemini_model,
         rpm_limit=settings.llm_rpm_limit,
         timeout_s=settings.llm_timeout_s,

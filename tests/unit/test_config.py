@@ -26,6 +26,7 @@ def test_settings_defaults():
     """Test default settings values."""
     # Reset env to ensure defaults are tested
     os.environ["GEMINI_API_KEY"] = "default_test_key"
+    os.environ["GEMINI_MODEL"] = "gemini-2.5-flash-lite"
     os.environ["APP_ENV"] = "dev"
 
     settings = Settings()
@@ -39,6 +40,11 @@ def test_settings_defaults():
     assert settings.sql_max_rows == 500
     assert settings.agent_max_llm_calls == 8
     assert settings.is_development is True
+    assert settings.api_keys == ["default_test_key"]
+
+    # Multiple keys test
+    settings_multi = Settings(gemini_api_key="k1, k2", gemini_api_keys="k2, k3")
+    assert settings_multi.api_keys == ["k1", "k2", "k3"]
 
 
 def test_settings_test_env():

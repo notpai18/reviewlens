@@ -23,9 +23,19 @@ class Settings(BaseSettings):
 
     # LLM Configuration
     gemini_api_key: str = Field(default="", description="Google Gemini API key")
+    gemini_api_keys: str = Field(default="", description="Comma-separated Google Gemini API keys")
     gemini_model: str = Field(default="gemini-2.5-flash-lite", description="Gemini model ID")
     llm_rpm_limit: int = Field(default=10, description="LLM requests per minute limit")
     llm_timeout_s: int = Field(default=45, description="LLM request timeout in seconds")
+
+    @property
+    def api_keys(self) -> list[str]:
+        keys: list[str] = []
+        if self.gemini_api_key:
+            keys.extend([k.strip() for k in self.gemini_api_key.split(",") if k.strip()])
+        if self.gemini_api_keys:
+            keys.extend([k.strip() for k in self.gemini_api_keys.split(",") if k.strip()])
+        return list(dict.fromkeys(keys))
 
     # Database Configuration
     duckdb_path: Path = Field(
