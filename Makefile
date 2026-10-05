@@ -57,7 +57,9 @@ data: fetch clean build-warehouse
 
 .PHONY: fetch
 fetch:
-	$(RUN_CLEAN) python scripts/fetch_reviews.py
+	@mkdir -p data/raw
+	$(RUN_CLEAN) python scripts/fetch_reviews.py --app-id com.nvsgames.snap --game "Marvel Snap" --target 8000 --out data/raw/marvel_snap.jsonl
+	$(RUN_CLEAN) python scripts/fetch_reviews.py --app-id com.devsisters.ck --game "Cookie Run: Kingdom" --target 8000 --out data/raw/cookie_run_kingdom.jsonl
 
 .PHONY: clean
 clean:

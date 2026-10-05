@@ -94,53 +94,50 @@ Required test coverage of 75.0% reached. Total coverage: 100.00%
 
 ### Acceptance Checks
 
-**Command**: `python scripts/clean_reviews.py --fixture && python scripts/build_warehouse.py --fixture && python scripts/profile_reviews.py --fixture`
+**Command (Real Data Scraped via Google Play Store)**:
+`python scripts/profile_reviews.py && python scripts/clean_reviews.py && python scripts/build_warehouse.py`
 
 ```
-2026-10-05 13:03:57,800 [INFO] Processing tests/fixtures/reviews_fixture.jsonl...
-2026-10-05 13:03:57,820 [INFO] Total valid unique cleaned reviews: 60
-2026-10-05 13:03:57,827 [INFO] Wrote 60 rows to Parquet: data/processed/reviews.parquet
-2026-10-05 13:03:57,838 [INFO] Wrote metadata to data/processed/meta.json
-2026-10-05 13:03:58,223 [INFO] Running in --fixture mode: cleaning fixture data first...
-2026-10-05 13:03:58,223 [INFO] Processing tests/fixtures/reviews_fixture.jsonl...
-2026-10-05 13:03:58,244 [INFO] Total valid unique cleaned reviews: 60
-2026-10-05 13:03:58,250 [INFO] Wrote 60 rows to Parquet: data/processed/reviews.parquet
-2026-10-05 13:03:58,262 [INFO] Wrote metadata to data/processed/meta.json
-2026-10-05 13:03:58,262 [INFO] Connecting to DuckDB at data/warehouse/reviewlens.duckdb...
-2026-10-05 13:03:58,274 [INFO] Created table 'reviews'. Running data quality checks...
-2026-10-05 13:03:58,277 [INFO] PASS: All review_ids are unique.
-2026-10-05 13:03:58,278 [INFO] PASS: All ratings are valid integers in 1..5.
-2026-10-05 13:03:58,279 [INFO] PASS: No null review_date, content, or game fields.
-2026-10-05 13:03:58,281 [INFO] PASS: Exactly 2 games present: ['Brawl Stars', 'Clash Royale'].
-
-================================================================================
-WAREHOUSE DATA QUALITY SUMMARY
-================================================================================
-Game: Brawl Stars        | Count: 30     | Dates: 2024-01-08 to 2024-08-31 (236d) | Med/Wk: 1.0   | Ver%: 96.7% | PASS
-Game: Clash Royale       | Count: 30     | Dates: 2024-01-05 to 2024-08-30 (238d) | Med/Wk: 1.0   | Ver%: 96.7% | PASS
-================================================================================
-
-2026-10-05 13:03:58,297 [INFO] PASS: Warehouse build and all data quality checks succeeded!
-
 ================================================================================
 REVIEWLENS DATA PROFILE (Section 6.1 Criteria)
 ================================================================================
 Game                 | Count   | Date Min   | Date Max   | Span  | Med/Wk  | Ver %  | Status
 --------------------------------------------------------------------------------------------
-Clash Royale         | 30      | 2024-01-05 | 2024-08-30 | 238 d | 1.0     | 96.7 % | PASS  
-Brawl Stars          | 30      | 2024-01-08 | 2024-08-31 | 236 d | 1.0     | 96.7 % | PASS  
+Cookie Run: Kingdom  | 7782    | 2026-05-12 | 2026-10-04 | 145 d | 376.0   | 86.0 % | PASS  
+Marvel Snap          | 7931    | 2024-11-14 | 2026-10-04 | 688 d | 58.0    | 85.1 % | PASS  
 --------------------------------------------------------------------------------------------
 
 Rating Distributions:
-  Clash Royale: 1★: 8, 2★: 5, 3★: 4, 4★: 6, 5★: 7
-  Brawl Stars: 1★: 8, 2★: 5, 3★: 3, 4★: 5, 5★: 9
+  Cookie Run: Kingdom: 1★: 591, 2★: 191, 3★: 354, 4★: 740, 5★: 5906
+  Marvel Snap: 1★: 4404, 2★: 968, 3★: 579, 4★: 544, 5★: 1436
 
 Version Coverage:
-  Clash Royale: 96.7% non-null app_version
-  Brawl Stars: 96.7% non-null app_version
+  Cookie Run: Kingdom: 86.0% non-null app_version
+  Marvel Snap: 85.1% non-null app_version
 ================================================================================
-Note: Running on fixture data (Section 6.1 volume thresholds relaxed).
-2026-10-05 13:03:58,684 [INFO] All games successfully passed Section 6.1 criteria!
+2026-10-05 17:15:58,731 [INFO] All games successfully passed Section 6.1 criteria!
+
+2026-10-05 17:16:03,746 [INFO] Processing data/raw/cookie_run_kingdom.jsonl...
+2026-10-05 17:16:05,821 [INFO] Processing data/raw/marvel_snap.jsonl...
+2026-10-05 17:16:07,853 [INFO] Total valid unique cleaned reviews: 15713
+2026-10-05 17:16:07,909 [INFO] Wrote 15713 rows to Parquet: data/processed/reviews.parquet
+2026-10-05 17:16:07,935 [INFO] Wrote metadata to data/processed/meta.json
+
+2026-10-05 17:16:14,262 [INFO] Connecting to DuckDB at data/warehouse/reviewlens.duckdb...
+2026-10-05 17:16:14,306 [INFO] Created table 'reviews'. Running data quality checks...
+2026-10-05 17:16:14,311 [INFO] PASS: All review_ids are unique.
+2026-10-05 17:16:14,312 [INFO] PASS: All ratings are valid integers in 1..5.
+2026-10-05 17:16:14,332 [INFO] PASS: No null review_date, content, or game fields.
+2026-10-05 17:16:14,336 [INFO] PASS: Exactly 2 games present: ['Cookie Run: Kingdom', 'Marvel Snap'].
+
+================================================================================
+WAREHOUSE DATA QUALITY SUMMARY
+================================================================================
+Game: Cookie Run: Kingdom | Count: 7782   | Dates: 2026-05-12 to 2026-10-04 (145d) | Med/Wk: 376.0 | Ver%: 86.0% | PASS
+Game: Marvel Snap        | Count: 7931   | Dates: 2024-11-14 to 2026-10-04 (689d) | Med/Wk: 58.0  | Ver%: 85.1% | PASS
+================================================================================
+
+2026-10-05 17:16:14,410 [INFO] PASS: Warehouse build and all data quality checks succeeded!
 ```
 
 **Unit Tests**: `pytest -m "not slow and not llm" --cov=reviewlens` -> 27 passed in 0.91s (100% coverage).

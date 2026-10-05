@@ -1,180 +1,363 @@
 - id: L01
   bucket: lexical
-  game: Brawl Stars
-  query: Brawl Stars games constantly
+  game: Marvel Snap
+  query: Marvel Snap insidious tied potentially
   relevant_review_ids:
-  - bs_004
+  - b1831bfb-7653-43a8-a215-c8d52bd3da56
 - id: L02
   bucket: lexical
-  game: Clash Royale
-  query: Clash Royale cards free
+  game: Marvel Snap
+  query: Marvel Snap earlier appeared kindly
   relevant_review_ids:
-  - cr_027
+  - 83dd95fd-11cf-42b6-86b7-5af53e336d3f
 - id: L03
   bucket: lexical
-  game: Brawl Stars
-  query: Brawl Stars best mobile action
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom code boom'
   relevant_review_ids:
-  - bs_024
+  - bb735c0f-1772-4b7c-a7fc-20312a638f31
 - id: L04
   bucket: lexical
-  game: Clash Royale
-  query: Clash Royale lost crash
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom cacao hollyberry'
   relevant_review_ids:
-  - cr_015
+  - e2dae2e5-e5eb-4edf-a4c1-1dafbc72fd7f
+  - 8e57b858-c8c6-4517-9ecb-a954c6fdd136
+  - e3124c55-6249-4346-b885-1b307542e283
+  - e785a559-a8de-4e7a-a6a6-79fd0cd4565a
 - id: L05
   bucket: lexical
-  game: Clash Royale
-  query: Clash Royale event love new
+  game: Marvel Snap
+  query: Marvel Snap emoji section pages
   relevant_review_ids:
-  - cr_020
+  - 8bf346a2-fa5d-4831-94b3-0d80de8e1434
 - id: L06
   bucket: lexical
-  game: Clash Royale
-  query: Clash Royale cards level constantly
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom grandma involved overstimulating'
   relevant_review_ids:
-  - cr_024
+  - 772cbbb6-3e86-4476-88ff-386d028d39e8
 - id: L07
   bucket: lexical
-  game: Brawl Stars
-  query: Brawl Stars every new
+  game: Marvel Snap
+  query: Marvel Snap causing zola outside
   relevant_review_ids:
-  - bs_025
+  - 459cca2c-70ab-4527-8e82-4578364cba49
 - id: L08
   bucket: lexical
-  game: Brawl Stars
-  query: Brawl Stars lag brawl matches
+  game: Marvel Snap
+  query: Marvel Snap continuing indicate messaging
   relevant_review_ids:
-  - bs_029
+  - 7119d96e-667e-4e59-a889-00d1bfd69c4e
 - id: L09
   bucket: lexical
-  game: Brawl Stars
-  query: Brawl Stars server disconnect match
+  game: Marvel Snap
+  query: Marvel Snap enemy outplay opinions
   relevant_review_ids:
-  - bs_009
+  - d3f8d284-8aac-4c6f-836e-b1124d701deb
 - id: L10
   bucket: lexical
-  game: Clash Royale
-  query: Clash Royale good ads
+  game: Marvel Snap
+  query: Marvel Snap balances detail decide
   relevant_review_ids:
-  - cr_013
+  - 0bdb5b76-0bfe-491a-8d26-5bd103cc049c
+- id: L11
+  bucket: lexical
+  game: Marvel Snap
+  query: Marvel Snap approach brings
+  relevant_review_ids:
+  - 5a3f2c90-0eff-494e-a1b1-7161763cffd0
+- id: L12
+  bucket: lexical
+  game: Marvel Snap
+  query: Marvel Snap progressing plans mentioned
+  relevant_review_ids:
+  - 4e54917c-45ec-44b0-9d9e-1f420ccd9f58
+- id: L13
+  bucket: lexical
+  game: Marvel Snap
+  query: Marvel Snap oblivion existence rip
+  relevant_review_ids:
+  - 0b789db7-f6a3-4ec5-9e8f-19d378b751fa
+- id: L14
+  bucket: lexical
+  game: Marvel Snap
+  query: Marvel Snap pode nem uma
+  relevant_review_ids:
+  - 1c91f8f0-5454-42bc-a2e0-5622ffff3c55
+- id: L15
+  bucket: lexical
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom lores loves'
+  relevant_review_ids:
+  - b9a006bb-57f0-4b7f-a53f-7fc3cf5fa94e
+- id: L16
+  bucket: lexical
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom pops notification'
+  relevant_review_ids:
+  - 49514d29-7e77-45fd-a24c-dd9ddeb59350
+- id: L17
+  bucket: lexical
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom artist herself bout'
+  relevant_review_ids:
+  - 82ca9beb-a024-48f5-bdce-2a751969dcca
+- id: L18
+  bucket: lexical
+  game: Marvel Snap
+  query: Marvel Snap meaning exactly unsustainable
+  relevant_review_ids:
+  - 8c44e991-577a-4ee5-bcfa-abd3cfe48739
+- id: L19
+  bucket: lexical
+  game: Marvel Snap
+  query: Marvel Snap suggestion revealed arent
+  relevant_review_ids:
+  - c226643f-7af2-423c-ae4a-819e9a5035b0
+- id: L20
+  bucket: lexical
+  game: Marvel Snap
+  query: Marvel Snap stomped boxes slower
+  relevant_review_ids:
+  - 14252523-d6da-4bf4-b9ff-5c8155195a76
 - id: S01
   bucket: semantic
-  game: Brawl Stars
-  query: Brawl Stars feedback regarding random
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom feedback regarding like'
   relevant_review_ids:
-  - bs_004
+  - ac54ec3a-8333-4fb6-8703-f56f23272a62
 - id: S02
   bucket: semantic
-  game: Clash Royale
-  query: Clash Royale feedback regarding takes
+  game: Marvel Snap
+  query: Marvel Snap feedback regarding two
   relevant_review_ids:
-  - cr_027
+  - b1831bfb-7653-43a8-a215-c8d52bd3da56
 - id: S03
   bucket: semantic
-  game: Brawl Stars
-  query: Brawl Stars feedback regarding supercell
+  game: Marvel Snap
+  query: Marvel Snap feedback regarding free
   relevant_review_ids:
-  - bs_024
+  - 83dd95fd-11cf-42b6-86b7-5af53e336d3f
 - id: S04
   bucket: semantic
-  game: Clash Royale
-  query: Clash Royale feedback regarding another
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom feedback regarding today'
   relevant_review_ids:
-  - cr_015
+  - bb735c0f-1772-4b7c-a7fc-20312a638f31
 - id: S05
   bucket: semantic
-  game: Clash Royale
-  query: Clash Royale feedback regarding love
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom feedback regarding fun'
   relevant_review_ids:
-  - cr_020
+  - 4771c506-0c6d-4130-8047-8fc916b59090
 - id: S06
   bucket: semantic
-  game: Clash Royale
-  query: Clash Royale feedback regarding matchmaking
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom feedback regarding wow'
   relevant_review_ids:
-  - cr_024
+  - e785a559-a8de-4e7a-a6a6-79fd0cd4565a
 - id: S07
   bucket: semantic
-  game: Brawl Stars
-  query: Brawl Stars feedback regarding unbalanced
+  game: Marvel Snap
+  query: Marvel Snap feedback regarding guys
   relevant_review_ids:
-  - bs_025
+  - 8bf346a2-fa5d-4831-94b3-0d80de8e1434
 - id: S08
   bucket: semantic
-  game: Brawl Stars
-  query: Brawl Stars feedback regarding lag
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom feedback regarding hate'
   relevant_review_ids:
-  - bs_029
+  - 772cbbb6-3e86-4476-88ff-386d028d39e8
 - id: S09
   bucket: semantic
-  game: Brawl Stars
-  query: Brawl Stars feedback regarding server
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom feedback regarding don'
   relevant_review_ids:
-  - bs_009
+  - f8e4ac98-d8d9-4333-a30b-20ac5e021030
 - id: S10
   bucket: semantic
-  game: Clash Royale
-  query: Clash Royale feedback regarding solid
+  game: Marvel Snap
+  query: Marvel Snap feedback regarding great
   relevant_review_ids:
-  - cr_023
+  - 459cca2c-70ab-4527-8e82-4578364cba49
+- id: S11
+  bucket: semantic
+  game: Marvel Snap
+  query: Marvel Snap feedback regarding love
+  relevant_review_ids:
+  - 786d73be-a2c0-4df9-bcb4-21dfff6509b4
+- id: S12
+  bucket: semantic
+  game: Marvel Snap
+  query: Marvel Snap feedback regarding plan
+  relevant_review_ids:
+  - b410eb90-cf6f-45a5-ba36-1c43cfec2b78
+- id: S13
+  bucket: semantic
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom feedback regarding make'
+  relevant_review_ids:
+  - 98f0e5de-3c58-482c-b4fe-e5f3f694855c
+- id: S14
+  bucket: semantic
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom feedback regarding absolutely'
+  relevant_review_ids:
+  - af563648-b3d1-48f6-b5e6-bd719edbaacd
+- id: S15
+  bucket: semantic
+  game: Marvel Snap
+  query: Marvel Snap feedback regarding longer
+  relevant_review_ids:
+  - 7119d96e-667e-4e59-a889-00d1bfd69c4e
+- id: S16
+  bucket: semantic
+  game: Marvel Snap
+  query: Marvel Snap feedback regarding sucks
+  relevant_review_ids:
+  - 9425b9d3-2779-46c7-a1ed-69a3aa121d82
+- id: S17
+  bucket: semantic
+  game: Marvel Snap
+  query: Marvel Snap feedback regarding recommend
+  relevant_review_ids:
+  - d3f8d284-8aac-4c6f-836e-b1124d701deb
+- id: S18
+  bucket: semantic
+  game: Marvel Snap
+  query: Marvel Snap feedback regarding wished
+  relevant_review_ids:
+  - 319711c8-f5c8-4c40-bc7c-e4a958c4e94f
+- id: S19
+  bucket: semantic
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom feedback regarding worst'
+  relevant_review_ids:
+  - c4eeef9f-bb91-4439-b8f9-06e5d17c757b
+- id: S20
+  bucket: semantic
+  game: Marvel Snap
+  query: Marvel Snap feedback regarding gameplay
+  relevant_review_ids:
+  - bec26713-31f4-4c7d-9d5a-167721d517b1
 - id: M01
   bucket: mixed
-  game: Brawl Stars
-  query: Brawl Stars random teammates ranked
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom like get white'
   relevant_review_ids:
-  - bs_004
+  - ac54ec3a-8333-4fb6-8703-f56f23272a62
 - id: M02
   bucket: mixed
-  game: Clash Royale
-  query: Clash Royale takes forever upgrade
+  game: Marvel Snap
+  query: Marvel Snap two years quit
   relevant_review_ids:
-  - cr_027
+  - b1831bfb-7653-43a8-a215-c8d52bd3da56
 - id: M03
   bucket: mixed
-  game: Brawl Stars
-  query: Brawl Stars supercell makes best
+  game: Marvel Snap
+  query: Marvel Snap free season card
   relevant_review_ids:
-  - bs_024
+  - 83dd95fd-11cf-42b6-86b7-5af53e336d3f
 - id: M04
   bucket: mixed
-  game: Clash Royale
-  query: Clash Royale another crash right
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom today when get'
   relevant_review_ids:
-  - cr_015
+  - bb735c0f-1772-4b7c-a7fc-20312a638f31
 - id: M05
   bucket: mixed
-  game: Clash Royale
-  query: Clash Royale love new emotes
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom fun addicting animation'
   relevant_review_ids:
-  - cr_020
+  - 4771c506-0c6d-4130-8047-8fc916b59090
 - id: M06
   bucket: mixed
-  game: Clash Royale
-  query: Clash Royale matchmaking pairs level
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom wow wow love'
   relevant_review_ids:
-  - cr_024
+  - e785a559-a8de-4e7a-a6a6-79fd0cd4565a
 - id: M07
   bucket: mixed
-  game: Brawl Stars
-  query: Brawl Stars unbalanced new brawler
+  game: Marvel Snap
+  query: Marvel Snap guys add emote
   relevant_review_ids:
-  - bs_025
+  - 8bf346a2-fa5d-4831-94b3-0d80de8e1434
 - id: M08
   bucket: mixed
-  game: Brawl Stars
-  query: Brawl Stars lag spikes brawl
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom hate trash graphics'
   relevant_review_ids:
-  - bs_029
+  - 772cbbb6-3e86-4476-88ff-386d028d39e8
 - id: M09
   bucket: mixed
-  game: Brawl Stars
-  query: Brawl Stars server disconnect issues
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom don even words'
   relevant_review_ids:
-  - bs_009
+  - f8e4ac98-d8d9-4333-a30b-20ac5e021030
 - id: M10
   bucket: mixed
-  game: Clash Royale
-  query: Clash Royale solid competitive mobile
+  game: Marvel Snap
+  query: Marvel Snap great however leave
   relevant_review_ids:
-  - cr_023
+  - 459cca2c-70ab-4527-8e82-4578364cba49
+- id: M11
+  bucket: mixed
+  game: Marvel Snap
+  query: Marvel Snap love dont like
+  relevant_review_ids:
+  - 786d73be-a2c0-4df9-bcb4-21dfff6509b4
+- id: M12
+  bucket: mixed
+  game: Marvel Snap
+  query: Marvel Snap plan fun challenging
+  relevant_review_ids:
+  - b410eb90-cf6f-45a5-ba36-1c43cfec2b78
+- id: M13
+  bucket: mixed
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom make feel happy'
+  relevant_review_ids:
+  - 98f0e5de-3c58-482c-b4fe-e5f3f694855c
+- id: M14
+  bucket: mixed
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom absolutely incredible only'
+  relevant_review_ids:
+  - af563648-b3d1-48f6-b5e6-bd719edbaacd
+- id: M15
+  bucket: mixed
+  game: Marvel Snap
+  query: Marvel Snap longer good conscience
+  relevant_review_ids:
+  - 7119d96e-667e-4e59-a889-00d1bfd69c4e
+- id: M16
+  bucket: mixed
+  game: Marvel Snap
+  query: Marvel Snap sucks always skillles
+  relevant_review_ids:
+  - 9425b9d3-2779-46c7-a1ed-69a3aa121d82
+- id: M17
+  bucket: mixed
+  game: Marvel Snap
+  query: Marvel Snap recommend don start
+  relevant_review_ids:
+  - d3f8d284-8aac-4c6f-836e-b1124d701deb
+- id: M18
+  bucket: mixed
+  game: Marvel Snap
+  query: Marvel Snap wished made where
+  relevant_review_ids:
+  - 319711c8-f5c8-4c40-bc7c-e4a958c4e94f
+- id: M19
+  bucket: mixed
+  game: 'Cookie Run: Kingdom'
+  query: 'Cookie Run: Kingdom worst world every'
+  relevant_review_ids:
+  - c4eeef9f-bb91-4439-b8f9-06e5d17c757b
+- id: M20
+  bucket: mixed
+  game: Marvel Snap
+  query: Marvel Snap gameplay great probably
+  relevant_review_ids:
+  - bec26713-31f4-4c7d-9d5a-167721d517b1
