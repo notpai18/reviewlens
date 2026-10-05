@@ -1,0 +1,150 @@
+{
+  "timestamp": "2026-10-05T16:28:54.041493",
+  "games": [
+    "Brawl Stars",
+    "Clash Royale"
+  ],
+  "llm": "FakeLLM (smoke test only, NOT real results)",
+  "sql": {
+    "total": 12,
+    "validator_pass_rate": 1.0,
+    "first_attempt_success_rate": 1.0,
+    "strict_execution_accuracy": 0.0,
+    "lenient_execution_accuracy": 0.0,
+    "mean_attempts": 1.0,
+    "errors": [
+      {
+        "id": "Q01",
+        "run": 1,
+        "question": "How many reviews are there for each game?",
+        "status": "wrong_result",
+        "strict": false,
+        "lenient": false,
+        "ref_rows": 2,
+        "pred_rows": 2,
+        "attempts": 1
+      },
+      {
+        "id": "Q02",
+        "run": 1,
+        "question": "What is the average rating of each game?",
+        "status": "wrong_result",
+        "strict": false,
+        "lenient": false,
+        "ref_rows": 2,
+        "pred_rows": 2,
+        "attempts": 1
+      },
+      {
+        "id": "Q03",
+        "run": 1,
+        "question": "What is the rating distribution (count per star) for Brawl Stars?",
+        "status": "wrong_result",
+        "strict": false,
+        "lenient": false,
+        "ref_rows": 5,
+        "pred_rows": 2,
+        "attempts": 1
+      },
+      {
+        "id": "Q04",
+        "run": 1,
+        "question": "What is the average rating per month for Brawl Stars?",
+        "status": "wrong_result",
+        "strict": false,
+        "lenient": false,
+        "ref_rows": 8,
+        "pred_rows": 2,
+        "attempts": 1
+      },
+      {
+        "id": "Q05",
+        "run": 1,
+        "question": "Which month had the lowest average rating for Brawl Stars, considering only months with at least 2 reviews?",
+        "status": "wrong_result",
+        "strict": false,
+        "lenient": false,
+        "ref_rows": 1,
+        "pred_rows": 2,
+        "attempts": 1
+      },
+      {
+        "id": "Q06",
+        "run": 1,
+        "question": "What percentage of Brawl Stars reviews are 1-star?",
+        "status": "wrong_result",
+        "strict": false,
+        "lenient": false,
+        "ref_rows": 1,
+        "pred_rows": 2,
+        "attempts": 1
+      },
+      {
+        "id": "Q07",
+        "run": 1,
+        "question": "Which 5 app versions of Brawl Stars have the lowest average rating, considering only versions with at least 2 reviews?",
+        "status": "wrong_result",
+        "strict": false,
+        "lenient": false,
+        "ref_rows": 5,
+        "pred_rows": 2,
+        "attempts": 1
+      },
+      {
+        "id": "Q08",
+        "run": 1,
+        "question": "How many Brawl Stars reviews mention \"crash\" (case-insensitive)?",
+        "status": "wrong_result",
+        "strict": false,
+        "lenient": false,
+        "ref_rows": 1,
+        "pred_rows": 2,
+        "attempts": 1
+      },
+      {
+        "id": "Q09",
+        "run": 1,
+        "question": "For Brawl Stars, compare the average rating of reviews that mention \"ads\" with those that do not.",
+        "status": "wrong_result",
+        "strict": false,
+        "lenient": false,
+        "ref_rows": 2,
+        "pred_rows": 2,
+        "attempts": 1
+      },
+      {
+        "id": "Q10",
+        "run": 1,
+        "question": "Show the 5 Brawl Stars reviews with the most thumbs up, with their rating and date.",
+        "status": "wrong_result",
+        "strict": false,
+        "lenient": false,
+        "ref_rows": 5,
+        "pred_rows": 2,
+        "attempts": 1
+      },
+      {
+        "id": "Q11",
+        "run": 1,
+        "question": "For Brawl Stars, compare the average rating in the last 30 days of data with the 30 days before that.",
+        "status": "wrong_result",
+        "strict": false,
+        "lenient": false,
+        "ref_rows": 2,
+        "pred_rows": 2,
+        "attempts": 1
+      },
+      {
+        "id": "Q12",
+        "run": 1,
+        "question": "What share of reviews received a developer reply, by star rating?",
+        "status": "wrong_result",
+        "strict": false,
+        "lenient": false,
+        "ref_rows": 5,
+        "pred_rows": 2,
+        "attempts": 1
+      }
+    ]
+  }
+}

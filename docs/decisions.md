@@ -92,6 +92,49 @@ This document tracks the key architectural and implementation decisions made dur
 
 **Alternatives considered**: Synthetic data generation, manually labeled datasets
 
+## 8. BudgetedLLM Wrapper and Hard LLM Caps
+
+**Decision**: Wrap all LLM client interactions in a `BudgetedLLM` proxy per request.
+
+**Rationale**:
+- Enforces `AGENT_MAX_LLM_CALLS` across all nodes (planning, SQL generate/repair, docs query building, synthesis)
+- Prevents unbounded retries or infinite repair loops from burning API quota
+- When budget is exhausted, allows agent nodes to gracefully return partial answers with explicit caveats rather than crashing
+
+**Alternatives considered**: LangChain callback counters, unmetered loop with wall-clock timeout only
+
+## 9. Deterministic UUID5 for Vector Points
+
+**Decision**: Compute Qdrant point IDs as `uuid5(NAMESPACE_URL, f"reviewlens:{review_id}")`.
+
+**Rationale**:
+- Qdrant requires point IDs to be valid integers or UUIDs
+- Native review IDs from scrapers/stores are string hashes
+- UUID5 generates identical IDs across multiple ingestion runs, guaranteeing idempotence and preventing duplicate vectors on re-indexing
+
+**Alternatives considered**: Sequential integer IDs, random UUID4 with mapping table
+
+## 10. AST Outer Row Limit Enforcement and Table Function Rejection
+
+**Decision**: Enforce row limits on the root AST SELECT node and disallow all table-valued/file-reading functions in DuckDB.
+
+**Rationale**:
+- Queries containing inner `LIMIT` clauses (e.g. inside subqueries or CTEs) could bypass naive limit checks while the outer query returned millions of rows
+- DuckDB supports table functions like `read_csv`, `read_ndjson`, `parquet_metadata`, and `glob` inside `FROM` clauses; these must be rejected by inspecting AST node types (`isinstance(tbl.this, exp.Identifier)`) and checking against a strict table whitelist
+
+**Alternatives considered**: Regex blacklist, database user permission grants (DuckDB is in-process and shares file access)
+
+## 11. Bounded Token-Bucket Rate Limiter with TTL Eviction
+
+**Decision**: Implement an in-memory token-bucket rate limiter with automatic TTL pruning of expired client IPs.
+
+**Rationale**:
+- Protects public API endpoints from denial-of-service and runaway Gemini API costs
+- Extracts client IP safely from the first hop of `X-Forwarded-For`
+- TTL eviction bounds memory usage in long-running processes, preventing memory leaks from ephemeral IPs
+
+**Alternatives considered**: Redis rate limiter (adds operational complexity and cost for a single-instance service), fixed-window counter
+
 ---
 
 *This document will be updated as new decisions are made during development.*

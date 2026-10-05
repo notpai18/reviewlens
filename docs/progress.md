@@ -146,22 +146,196 @@ Note: Running on fixture data (Section 6.1 volume thresholds relaxed).
 **Unit Tests**: `pytest -m "not slow and not llm" --cov=reviewlens` -> 27 passed in 0.91s (100% coverage).
 
 ## Phase 2: SQL Tool (Days 4-5)
-**Status**: NOT STARTED
+**Date**: 2026-10-05  
+**Status**: COMPLETED ✅
+
+### Tasks
+- [x] Create `sql/validator.py` with AST-based validation for DuckDB (hardened against file/table functions, strict row limit wrapping, single statement enforcement)
+- [x] Implement unit tests for SQL validator with 30+ parameterized cases (`tests/unit/test_sql_validator.py` and `tests/unit/test_sql_validator_hardening.py`)
+- [x] Create `warehouse/duckdb_backend.py` for read-only database querying with time/memory caps
+- [x] Implement LLM clients in `llm/fake.py` and `llm/gemini.py`
+- [x] Create prompts and schema context loaders (`warehouse/catalog.py`)
+- [x] Create `data/catalog/schema.yaml` and `data/catalog/fewshots.yaml`
+- [x] Create `data/eval/golden.yaml` with 30 evaluation questions (disjoint from fewshots with Jaccard overlap < 0.75 verified by `tests/unit/test_leakage.py`)
+- [x] Implement SQL generate/repair loop in `sql/generate.py` with usage tracking
+- [x] Implement `evaluation/metrics_sql.py` and runner `scripts/run_eval.py`
+- [x] Run unit tests and CLI generation check
+
+### Acceptance Checks
+
+**Command**: `python -m reviewlens.sql.generate "How many reviews does each game have?"`
+
+```
+NOTE: GEMINI_API_KEY is not set (human task H2). Using FakeLLM demo generator.
+
+Question: How many reviews does each game have?
+
+Success: True
+Attempts: 1
+  Attempt 1: success
+
+SQL:
+SELECT game, COUNT(*) AS n FROM reviews GROUP BY game LIMIT 500
+
+Columns: ['game', 'n']
+Rows (2):
+  ['Clash Royale', 30]
+  ['Brawl Stars', 30]
+```
+
+**Command**: `python scripts/run_eval.py --suite sql --runs 1 --fake-llm`
+
+```
+Games: ['Brawl Stars', 'Clash Royale']
+Suite: sql, Runs: 1
+
+=== SQL Evaluation ===
+WARNING: --fake-llm smoke mode. Every question gets the SAME canned SQL.
+  [Q01] How many reviews are there for each game?...
+  [Q02] What is the average rating of each game?...
+  [Q03] What is the rating distribution (count per star) for Brawl Stars?...
+  ...
+SQL Metrics:
+  total: 12
+  validator_pass_rate: 1.0
+  first_attempt_success_rate: 1.0
+  strict_execution_accuracy: 0.0
+  lenient_execution_accuracy: 0.0
+  mean_attempts: 1.0
+```
+
+---
 
 ## Phase 3: Search Tool (Days 6-7)
-**Status**: NOT STARTED
+**Date**: 2026-10-05  
+**Status**: COMPLETED ✅ (Pending live Qdrant container H4 for live index run)
+
+### Tasks
+- [x] FastEmbed wrapper with local `BAAI/bge-small-en-v1.5` dense and `prithivida/Splade_PP_en_v1` sparse models
+- [x] Collection creation with multi-vector configurations and payload indexes for `game`, `app_version`, `rating`, `review_date`
+- [x] Deterministic UUID5 point IDs (`uuid5(NAMESPACE_URL, f"reviewlens:{review_id}")`) ensuring idempotent upserts
+- [x] Three search modes: `hybrid_rrf` (server-side RRF), `bm25` (sparse only), and `dense` (embeddings only)
+- [x] Filter translation for game names, rating ranges, version lists, and date bounds
+- [x] Retrieval evaluation metrics (`Hit@1`, `Hit@5`, `Hit@10`, `MRR`) across lexical, semantic, and mixed query buckets
+- [x] 1,000-resample paired bootstrap 95% confidence intervals with fixed seed (42) for reproducibility
+- [x] Query generator `scripts/make_retrieval_queries.py` generating `data/eval/retrieval_queries.yaml`
+- [x] Unit test suites in `tests/unit/test_search.py`, `tests/unit/test_indexer.py`, and `tests/unit/test_metrics_retrieval.py`
+
+### Acceptance Checks
+- `pytest tests/unit/test_search.py tests/unit/test_indexer.py tests/unit/test_metrics_retrieval.py` -> 13 passed in 0.35s
+- Script verification: `python scripts/make_retrieval_queries.py` -> Generated 30 queries across 3 buckets
+- Note: Live index acceptance command (`docker compose up -d qdrant && python scripts/ingest.py --rebuild`) requires Docker binary (Human Task H4).
+
+---
 
 ## Phase 4: Agent (Days 8-9)
-**Status**: NOT STARTED
+**Date**: 2026-10-05  
+**Status**: COMPLETED ✅
+
+### Tasks
+- [x] State definitions (`AgentState`, `AgentContext`) and node functions (`plan_node`, `sql_tool_node`, `docs_tool_node`, `synthesize_node`, `verify_node`, `refuse_node`)
+- [x] Compiled LangGraph state machine with conditional routing for `sql_only`, `docs_only`, `sequential_hybrid`, and `refuse`
+- [x] Evidence formatting with prompt-injection defense (escaping `<`, `>`, `"`, stripping ASCII control characters)
+- [x] Hallucination verification: `verify_node` cross-checks all finding `evidence_ids` against valid tool results (`SQL#N` and `REV:<id>`), dropping unsupported claims
+- [x] Hard LLM call budget guard (`BudgetedLLM`) capping requests at `AGENT_MAX_LLM_CALLS` (default 4) and returning deterministic partial answers on exhaustion
+- [x] Agent timeout guard enforcing `AGENT_TIMEOUT_S` via `asyncio.wait_for`
+- [x] CLI entry point: `python -m reviewlens.agent.graph "<question>"`
+- [x] Full test suite: `tests/unit/test_agent_nodes.py`, `tests/unit/test_agent_graph.py`, and `tests/unit/test_evidence.py`
+
+### Acceptance Checks
+
+**Command**: `python -m reviewlens.agent.graph "What are the common complaints about matchmaking in Brawl Stars?"`
+
+```
+NOTE: GEMINI_API_KEY is not set (human task H2). Running with FakeLLM demo agent.
+
+Question: What are the common complaints about matchmaking in Brawl Stars?
+
+=== ANSWER ===
+Brawl Stars has an average rating of 4.1. Players frequently report matchmaking latency and bugs.
+
+**Findings**
+- *Observed:* Brawl Stars averages 4.1 stars across reviews. [SQL#1]
+
+**Caveats**
+- Demonstration answer generated using FakeLLM simulator.
+
+**You could also ask**
+- Examine matchmaking latency by app version.
+
+=== SQL ===
+  attempt 1: success
+  final: SELECT game, ROUND(AVG(rating), 2) AS avg_rating, COUNT(*) AS n FROM reviews GROUP BY game LIMIT 500
+
+=== TRACE ===
+  plan             0 ms  intent=analytics, tools=['sql', 'docs']
+  sql_tool        39 ms  SQL success: True, attempts: 1 (2 rows)
+  docs_tool        0 ms  Search failed: [Errno 111] Connection refused
+  docs_tool     1140 ms  Retrieved 0 documents (query='matchmaking crash').
+  synthesize       0 ms  Synthesized answer.
+  verify           0 ms  Verified findings: 1 kept, 1 dropped.
+
+Usage: 3 LLM calls, 1998+224 tokens
+```
+
+Unit test verification: `pytest tests/unit/test_agent_graph.py` -> 5 passed in 2.66s.
+
+---
 
 ## Phase 5: API & Demo Page (Day 10)
-**Status**: NOT STARTED
+**Date**: 2026-10-05  
+**Status**: COMPLETED ✅
+
+### Tasks
+- [x] FastAPI application with lifespan management, structured JSON logging, and security headers
+- [x] Standardized error envelope: `{"error": {"code", "message", "request_id"}}` with 422 (`validation_error`), 429 (`rate_limited`), 502 (`upstream_llm_error`), and 504 (`timeout`)
+- [x] Endpoints: `GET /health`, `GET /ready`, `POST /ask`, `POST /ingest`, and `GET /ingest/status`
+- [x] In-memory bounded token-bucket rate limiter with IP extraction and TTL cleanup
+- [x] Static single-page interactive demo UI (`src/reviewlens/api/static/index.html`) displaying markdown answers, interactive citation tooltips, SQL execution details, and agent trace timeline
+- [x] Unit test suite in `tests/unit/test_api.py` covering all endpoints, error cases, cache hits, body size limits, and auth
+
+### Acceptance Checks
+
+**Command**: `curl -i http://127.0.0.1:8000/health`
+```http
+HTTP/1.1 200 OK
+content-type: application/json
+x-content-type-options: nosniff
+referrer-policy: no-referrer
+
+{"status":"ok"}
+```
+
+**Command**: `curl -i -X POST http://127.0.0.1:8000/ask -H "Content-Type: application/json" -d '{}'`
+```http
+HTTP/1.1 422 Unprocessable Entity
+content-type: application/json
+
+{"error":{"code":"validation_error","message":"body.question: Field required","request_id":"bdc6260b-dcfb-4e52-9b83-0db91b84eba1"}}
+```
+
+**Command**: `curl -i http://127.0.0.1:8000/`
+```http
+HTTP/1.1 200 OK
+content-type: text/html; charset=utf-8
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ReviewLens Demo</title>
+...
+```
+
+Unit test verification: `pytest tests/unit/test_api.py` -> 9 passed in 2.21s.
+
+---
 
 ## Phase 6: Full Evaluation & Report (Day 11)
-**Status**: NOT STARTED
+**Status**: READY FOR HUMAN TASKS (Requires H1 real reviews, H2 Gemini key, H4 Qdrant container)
 
 ## Phase 7: Docker, Cloud Run, CI (Day 12)
 **Status**: NOT STARTED
 
 ## Phase 8: Polish (Day 13)
 **Status**: NOT STARTED
+
