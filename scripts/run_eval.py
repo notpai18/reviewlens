@@ -277,9 +277,66 @@ def _write_results(
             for ci in metrics_dict["retrieval"].get("bootstrap_ci", []):
                 sig = " (Significant)" if ci.get("significant") else " (Inconclusive)"
                 f.write(f"- vs {ci['baseline']}: diff={ci['diff_mean']}, 95% CI [{ci['ci_lower']}, {ci['ci_upper']}]{sig}\n")
+        if "e2e" in metrics_dict:
+            e2e_m = metrics_dict["e2e"]
+            f.write("## End-to-End Evaluation\n\n")
+            f.write("| Metric | Value |\n|---|---|\n")
+            for k in [
+                "total",
+                "routing_accuracy",
+                "adversarial_safety_rate",
+                "citation_validity_rate",
+                "citation_relevance_rate",
+                "overall_pass_rate",
+                "latency_p50",
+                "latency_p95",
+                "mean_tokens",
+            ]:
+                if k in e2e_m:
+                    f.write(f"| {k} | {e2e_m[k]} |\n")
             f.write("\n")
 
     print(f"Summary written to {summary_path}")
+
+
+async def run_e2e_eval(
+    golden_path: Path,
+    games: list[str],
+    settings: Any,
+    limit: int | None = None,
+) -> dict[str, Any]:
+    """Run E2E evaluation on golden questions."""
+    import time
+    from reviewlens.agent.factory import build_components, make_context
+    from reviewlens.agent.graph import run_question
+    from reviewlens.evaluation.metrics_e2e import check_e2e_result, compute_e2e_metrics
+
+    questions = _load_golden(golden_path, games)
+    if limit:
+        questions = questions[:limit]
+
+    components = build_components(settings)
+    secrets = [s for s in [settings.gemini_api_key, settings.qdrant_api_key] if s]
+
+    results = []
+    print(f"Running E2E evaluation on {len(questions)} golden questions...")
+    for q in questions:
+        qid = q["id"]
+        q_text = q["question"]
+        print(f"  [{qid}] ({q.get('category')}) {q_text[:60]}...", flush=True)
+        ctx = make_context(components, settings)
+        t0 = time.perf_counter()
+        try:
+            state = await run_question(ctx, q_text)
+            latency = time.perf_counter() - t0
+        except Exception as exc:
+            latency = time.perf_counter() - t0
+            state = {"error": str(exc)}
+        res = check_e2e_result(q, state, secrets, latency)
+        results.append(res)
+
+    metrics = compute_e2e_metrics(results)
+    return metrics.to_dict()
 
 
 async def _async_main(args: argparse.Namespace) -> None:
@@ -294,7 +351,19 @@ async def _async_main(args: argparse.Namespace) -> None:
     print(f"Games: {games}")
     print(f"Suite: {args.suite}, Runs: {args.runs}")
 
+    # Load existing metrics if present so multi-step eval suites merge cleanly
+    metrics_path = output_dir / "metrics.json"
     metrics_out: dict[str, Any] = {"timestamp": datetime.now().isoformat(), "games": games}
+    if metrics_path.exists():
+        try:
+            with open(metrics_path, encoding="utf-8") as f:
+                existing = json.load(f)
+                if isinstance(existing, dict):
+                    metrics_out.update(existing)
+                    metrics_out["timestamp"] = datetime.now().isoformat()
+                    metrics_out["games"] = games
+        except Exception:
+            pass
 
     if args.suite in ("sql", "all"):
         print("\n=== SQL Evaluation ===")
@@ -372,7 +441,16 @@ async def _async_main(args: argparse.Namespace) -> None:
 
     if args.suite in ("e2e", "all"):
         print("\n=== End-to-End Evaluation ===")
-        print("  (E2E eval implemented in Phase 4-5 — skipping for Phase 2)")
+        e2e_metrics = await run_e2e_eval(
+            golden_path=golden_path,
+            games=games,
+            settings=settings,
+        )
+        metrics_out["e2e"] = e2e_metrics
+        print("\nE2E Metrics:")
+        for k, v in e2e_metrics.items():
+            if k != "results":
+                print(f"  {k}: {v}")
 
     _write_results(metrics_out, output_dir)
 

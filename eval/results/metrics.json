@@ -1,10 +1,130 @@
 {
-  "timestamp": "2026-10-05T19:57:50.642635",
+  "timestamp": "2026-10-05T20:22:08.261186",
   "games": [
     "Cookie Run: Kingdom",
     "Marvel Snap"
   ],
-  "llm": "gemini-2.5-flash",
+  "retrieval": {
+    "modes": {
+      "bm25": {
+        "mode": "bm25",
+        "overall": {
+          "total_queries": 60,
+          "hit_at_1": 0.3333,
+          "hit_at_5": 0.4167,
+          "hit_at_10": 0.4667,
+          "mrr": 0.3701
+        },
+        "by_bucket": {
+          "lexical": {
+            "total_queries": 20,
+            "hit_at_1": 0.8,
+            "hit_at_5": 0.95,
+            "hit_at_10": 0.95,
+            "mrr": 0.8583
+          },
+          "semantic": {
+            "total_queries": 20,
+            "hit_at_1": 0.0,
+            "hit_at_5": 0.0,
+            "hit_at_10": 0.05,
+            "mrr": 0.0063
+          },
+          "mixed": {
+            "total_queries": 20,
+            "hit_at_1": 0.2,
+            "hit_at_5": 0.3,
+            "hit_at_10": 0.4,
+            "mrr": 0.2458
+          }
+        }
+      },
+      "dense": {
+        "mode": "dense",
+        "overall": {
+          "total_queries": 60,
+          "hit_at_1": 0.0167,
+          "hit_at_5": 0.0333,
+          "hit_at_10": 0.0333,
+          "mrr": 0.025
+        },
+        "by_bucket": {
+          "lexical": {
+            "total_queries": 20,
+            "hit_at_1": 0.05,
+            "hit_at_5": 0.1,
+            "hit_at_10": 0.1,
+            "mrr": 0.075
+          },
+          "semantic": {
+            "total_queries": 20,
+            "hit_at_1": 0.0,
+            "hit_at_5": 0.0,
+            "hit_at_10": 0.0,
+            "mrr": 0.0
+          },
+          "mixed": {
+            "total_queries": 20,
+            "hit_at_1": 0.0,
+            "hit_at_5": 0.0,
+            "hit_at_10": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "hybrid_rrf": {
+        "mode": "hybrid_rrf",
+        "overall": {
+          "total_queries": 60,
+          "hit_at_1": 0.0833,
+          "hit_at_5": 0.3667,
+          "hit_at_10": 0.4167,
+          "mrr": 0.221
+        },
+        "by_bucket": {
+          "lexical": {
+            "total_queries": 20,
+            "hit_at_1": 0.15,
+            "hit_at_5": 0.85,
+            "hit_at_10": 0.95,
+            "mrr": 0.5042
+          },
+          "semantic": {
+            "total_queries": 20,
+            "hit_at_1": 0.0,
+            "hit_at_5": 0.0,
+            "hit_at_10": 0.0,
+            "mrr": 0.0
+          },
+          "mixed": {
+            "total_queries": 20,
+            "hit_at_1": 0.1,
+            "hit_at_5": 0.25,
+            "hit_at_10": 0.3,
+            "mrr": 0.1588
+          }
+        }
+      }
+    },
+    "bootstrap_ci": [
+      {
+        "baseline": "bm25",
+        "metric": "Hit@5",
+        "diff_mean": -0.05,
+        "ci_lower": -0.1167,
+        "ci_upper": 0.0,
+        "significant": false
+      },
+      {
+        "baseline": "dense",
+        "metric": "Hit@5",
+        "diff_mean": 0.3333,
+        "ci_lower": 0.2167,
+        "ci_upper": 0.45,
+        "significant": true
+      }
+    ]
+  },
   "sql": {
     "total": 12,
     "validator_pass_rate": 0.9167,
@@ -110,5 +230,6 @@
         "attempts": 0
       }
     ]
-  }
+  },
+  "llm": "gemini-2.5-flash-lite"
 }
