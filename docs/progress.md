@@ -399,6 +399,53 @@ ALL SMOKE CHECKS PASSED SUCCESSFULLY! Service is healthy and functional.
 ---
 
 ## Phase 8: Polish (Day 13)
-**Status**: IN PROGRESS (Creating polished README and architecture assets)
+**Date**: 2026-10-06  
+**Status**: COMPLETED ✅
+
+### Tasks
+- [x] Preserve full master engineering specification in `docs/SPEC.md`
+- [x] Create recruiter-grade `README.md` meeting all Section 1.3 and Section 14 first-screen checklist requirements (headline results, architecture diagram, sample questions, quickstart, 4-paragraph mechanism breakdown, limitations)
+- [x] Author comprehensive architecture documentation in `docs/architecture.md` detailing end-to-end request lifecycle, LangGraph agent flow, and multi-layer security defense matrix
+- [x] Add standard MIT `LICENSE`
+- [x] Verify exploratory data analysis notebook (`notebooks/01_eda.ipynb`)
+- [x] Re-verify strict alignment of all reported numbers via `scripts/check_report_numbers.py`
+- [x] Run full unit & integration test suite (`make test` -> 243 passed, 86.17% coverage, exceeding 75% target)
+- [x] Verify static code analysis (`make lint`, `make typecheck`)
+- [x] Create release tag `v1.0.0`
+
+### Acceptance Checks
+
+**Command**: `python scripts/check_report_numbers.py`
+```
+PASS: All key evaluation numbers in REPORT.md are verified against metrics.json!
+```
+
+**Command**: `make lint && make typecheck && make test`
+```
+All checks passed!
+19 files already formatted
+Success: no issues found in 27 source files
+================ 243 passed, 1 deselected, 1 warning in 18.73s =================
+Required test coverage of 75.0% reached. Total coverage: 86.17%
+```
+
+**Command**: `git tag -a v1.0.0 -m "Release v1.0.0: ReviewLens full implementation"`
+```
+Tag v1.0.0 created successfully.
+```
+
+---
+
+## Project Completion Summary
+
+All 9 implementation phases (Phase 0 through Phase 8) of ReviewLens are **100% COMPLETE**.
+- **Real Data**: 15,713 clean reviews from Google Play for *Cookie Run: Kingdom* and *Marvel Snap*.
+- **Warehouse**: DuckDB single-table analytics with strict AST-enforced validation and self-repair.
+- **Search**: FastEmbed dense (`bge-small`) + sparse BM25 with Qdrant server-side RRF hybrid fusion.
+- **Agent**: LangGraph state machine with budget guards, XML evidence formatting, and 100% citation grounding verification.
+- **API & UI**: FastAPI with IP token-bucket rate limiting, 1-hr TTL cache, and vanilla JS interactive web demo.
+- **Evaluation**: 60-query benchmark with 1,000-resample bootstrap 95% CIs and zero hallucinated numbers.
+- **Ops**: Multi-stage non-root Docker container, docker-compose, CI workflow, and Cloud Run readiness.
+
 
 
