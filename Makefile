@@ -6,7 +6,7 @@ RUFF = $(VENV_BIN)/ruff
 MYPY = $(VENV_BIN)/mypy
 
 # Clean environment wrapper for running tools without ROS conflicts
-RUN_CLEAN = env -i HOME=$(HOME) PATH=$(PWD)/.venv/bin:/usr/local/bin:/usr/bin:/bin PYTHONPATH=$(PWD)/src
+RUN_CLEAN = env -i HOME=$(HOME) PATH=$(PWD)/.venv/bin:/usr/local/bin:/usr/bin:/bin PYTHONPATH=$(PWD)/src:$(PWD)
 
 # Installation
 .PHONY: venv

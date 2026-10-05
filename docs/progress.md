@@ -77,7 +77,73 @@ Required test coverage of 75.0% reached. Total coverage: 100.00%
 ---
 
 ## Phase 1: Data Pipeline (Days 2-3)
-**Status**: NOT STARTED
+**Date**: 2026-10-05  
+**Status**: COMPLETED ✅
+
+### Tasks
+- [x] Create hand-crafted 60-review test fixture (`tests/fixtures/reviews_fixture.jsonl`) spanning 2 games, ratings 1-5, and version tags
+- [x] Implement `scripts/fetch_reviews.py` (polite, resumable scraping with sidecar token persistence and strict PII exclusion)
+- [x] Implement `scripts/import_csv.py` (fallback dataset importer with dynamic column mapping)
+- [x] Implement `scripts/profile_reviews.py` (Section 6.1 quality criteria profiler and formatted summary table)
+- [x] Implement `scripts/clean_reviews.py` (deduplication, regex PII redaction, ASCII English filter, parquet writer, meta.json extractor)
+- [x] Implement `scripts/build_warehouse.py` (DuckDB database loader with Section 6.5 data-quality checks)
+- [x] Create Exploratory Data Analysis notebook (`notebooks/01_eda.ipynb`)
+- [x] Implement unit tests in `tests/unit/test_data_pipeline.py`
+- [x] Verify data cleaning, warehouse building, and profiling with `--fixture` mode
+- [x] Verify `make lint format typecheck test` passes with 100% code coverage
+
+### Acceptance Checks
+
+**Command**: `python scripts/clean_reviews.py --fixture && python scripts/build_warehouse.py --fixture && python scripts/profile_reviews.py --fixture`
+
+```
+2026-10-05 13:03:57,800 [INFO] Processing tests/fixtures/reviews_fixture.jsonl...
+2026-10-05 13:03:57,820 [INFO] Total valid unique cleaned reviews: 60
+2026-10-05 13:03:57,827 [INFO] Wrote 60 rows to Parquet: data/processed/reviews.parquet
+2026-10-05 13:03:57,838 [INFO] Wrote metadata to data/processed/meta.json
+2026-10-05 13:03:58,223 [INFO] Running in --fixture mode: cleaning fixture data first...
+2026-10-05 13:03:58,223 [INFO] Processing tests/fixtures/reviews_fixture.jsonl...
+2026-10-05 13:03:58,244 [INFO] Total valid unique cleaned reviews: 60
+2026-10-05 13:03:58,250 [INFO] Wrote 60 rows to Parquet: data/processed/reviews.parquet
+2026-10-05 13:03:58,262 [INFO] Wrote metadata to data/processed/meta.json
+2026-10-05 13:03:58,262 [INFO] Connecting to DuckDB at data/warehouse/reviewlens.duckdb...
+2026-10-05 13:03:58,274 [INFO] Created table 'reviews'. Running data quality checks...
+2026-10-05 13:03:58,277 [INFO] PASS: All review_ids are unique.
+2026-10-05 13:03:58,278 [INFO] PASS: All ratings are valid integers in 1..5.
+2026-10-05 13:03:58,279 [INFO] PASS: No null review_date, content, or game fields.
+2026-10-05 13:03:58,281 [INFO] PASS: Exactly 2 games present: ['Brawl Stars', 'Clash Royale'].
+
+================================================================================
+WAREHOUSE DATA QUALITY SUMMARY
+================================================================================
+Game: Brawl Stars        | Count: 30     | Dates: 2024-01-08 to 2024-08-31 (236d) | Med/Wk: 1.0   | Ver%: 96.7% | PASS
+Game: Clash Royale       | Count: 30     | Dates: 2024-01-05 to 2024-08-30 (238d) | Med/Wk: 1.0   | Ver%: 96.7% | PASS
+================================================================================
+
+2026-10-05 13:03:58,297 [INFO] PASS: Warehouse build and all data quality checks succeeded!
+
+================================================================================
+REVIEWLENS DATA PROFILE (Section 6.1 Criteria)
+================================================================================
+Game                 | Count   | Date Min   | Date Max   | Span  | Med/Wk  | Ver %  | Status
+--------------------------------------------------------------------------------------------
+Clash Royale         | 30      | 2024-01-05 | 2024-08-30 | 238 d | 1.0     | 96.7 % | PASS  
+Brawl Stars          | 30      | 2024-01-08 | 2024-08-31 | 236 d | 1.0     | 96.7 % | PASS  
+--------------------------------------------------------------------------------------------
+
+Rating Distributions:
+  Clash Royale: 1★: 8, 2★: 5, 3★: 4, 4★: 6, 5★: 7
+  Brawl Stars: 1★: 8, 2★: 5, 3★: 3, 4★: 5, 5★: 9
+
+Version Coverage:
+  Clash Royale: 96.7% non-null app_version
+  Brawl Stars: 96.7% non-null app_version
+================================================================================
+Note: Running on fixture data (Section 6.1 volume thresholds relaxed).
+2026-10-05 13:03:58,684 [INFO] All games successfully passed Section 6.1 criteria!
+```
+
+**Unit Tests**: `pytest -m "not slow and not llm" --cov=reviewlens` -> 27 passed in 0.91s (100% coverage).
 
 ## Phase 2: SQL Tool (Days 4-5)
 **Status**: NOT STARTED
