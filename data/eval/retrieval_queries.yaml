@@ -1,0 +1,180 @@
+- id: L01
+  bucket: lexical
+  game: Brawl Stars
+  query: Brawl Stars games constantly
+  relevant_review_ids:
+  - bs_004
+- id: L02
+  bucket: lexical
+  game: Clash Royale
+  query: Clash Royale cards free
+  relevant_review_ids:
+  - cr_027
+- id: L03
+  bucket: lexical
+  game: Brawl Stars
+  query: Brawl Stars best mobile action
+  relevant_review_ids:
+  - bs_024
+- id: L04
+  bucket: lexical
+  game: Clash Royale
+  query: Clash Royale lost crash
+  relevant_review_ids:
+  - cr_015
+- id: L05
+  bucket: lexical
+  game: Clash Royale
+  query: Clash Royale event love new
+  relevant_review_ids:
+  - cr_020
+- id: L06
+  bucket: lexical
+  game: Clash Royale
+  query: Clash Royale cards level constantly
+  relevant_review_ids:
+  - cr_024
+- id: L07
+  bucket: lexical
+  game: Brawl Stars
+  query: Brawl Stars every new
+  relevant_review_ids:
+  - bs_025
+- id: L08
+  bucket: lexical
+  game: Brawl Stars
+  query: Brawl Stars lag brawl matches
+  relevant_review_ids:
+  - bs_029
+- id: L09
+  bucket: lexical
+  game: Brawl Stars
+  query: Brawl Stars server disconnect match
+  relevant_review_ids:
+  - bs_009
+- id: L10
+  bucket: lexical
+  game: Clash Royale
+  query: Clash Royale good ads
+  relevant_review_ids:
+  - cr_013
+- id: S01
+  bucket: semantic
+  game: Brawl Stars
+  query: Brawl Stars feedback regarding random
+  relevant_review_ids:
+  - bs_004
+- id: S02
+  bucket: semantic
+  game: Clash Royale
+  query: Clash Royale feedback regarding takes
+  relevant_review_ids:
+  - cr_027
+- id: S03
+  bucket: semantic
+  game: Brawl Stars
+  query: Brawl Stars feedback regarding supercell
+  relevant_review_ids:
+  - bs_024
+- id: S04
+  bucket: semantic
+  game: Clash Royale
+  query: Clash Royale feedback regarding another
+  relevant_review_ids:
+  - cr_015
+- id: S05
+  bucket: semantic
+  game: Clash Royale
+  query: Clash Royale feedback regarding love
+  relevant_review_ids:
+  - cr_020
+- id: S06
+  bucket: semantic
+  game: Clash Royale
+  query: Clash Royale feedback regarding matchmaking
+  relevant_review_ids:
+  - cr_024
+- id: S07
+  bucket: semantic
+  game: Brawl Stars
+  query: Brawl Stars feedback regarding unbalanced
+  relevant_review_ids:
+  - bs_025
+- id: S08
+  bucket: semantic
+  game: Brawl Stars
+  query: Brawl Stars feedback regarding lag
+  relevant_review_ids:
+  - bs_029
+- id: S09
+  bucket: semantic
+  game: Brawl Stars
+  query: Brawl Stars feedback regarding server
+  relevant_review_ids:
+  - bs_009
+- id: S10
+  bucket: semantic
+  game: Clash Royale
+  query: Clash Royale feedback regarding solid
+  relevant_review_ids:
+  - cr_023
+- id: M01
+  bucket: mixed
+  game: Brawl Stars
+  query: Brawl Stars random teammates ranked
+  relevant_review_ids:
+  - bs_004
+- id: M02
+  bucket: mixed
+  game: Clash Royale
+  query: Clash Royale takes forever upgrade
+  relevant_review_ids:
+  - cr_027
+- id: M03
+  bucket: mixed
+  game: Brawl Stars
+  query: Brawl Stars supercell makes best
+  relevant_review_ids:
+  - bs_024
+- id: M04
+  bucket: mixed
+  game: Clash Royale
+  query: Clash Royale another crash right
+  relevant_review_ids:
+  - cr_015
+- id: M05
+  bucket: mixed
+  game: Clash Royale
+  query: Clash Royale love new emotes
+  relevant_review_ids:
+  - cr_020
+- id: M06
+  bucket: mixed
+  game: Clash Royale
+  query: Clash Royale matchmaking pairs level
+  relevant_review_ids:
+  - cr_024
+- id: M07
+  bucket: mixed
+  game: Brawl Stars
+  query: Brawl Stars unbalanced new brawler
+  relevant_review_ids:
+  - bs_025
+- id: M08
+  bucket: mixed
+  game: Brawl Stars
+  query: Brawl Stars lag spikes brawl
+  relevant_review_ids:
+  - bs_029
+- id: M09
+  bucket: mixed
+  game: Brawl Stars
+  query: Brawl Stars server disconnect issues
+  relevant_review_ids:
+  - bs_009
+- id: M10
+  bucket: mixed
+  game: Clash Royale
+  query: Clash Royale solid competitive mobile
+  relevant_review_ids:
+  - cr_023
