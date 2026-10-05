@@ -2,6 +2,10 @@
 data/raw/
 data/processed/
 data/warehouse/
+data/qdrant_data/
+
+# Local binaries
+.bin/
 
 # Environment files
 .env
