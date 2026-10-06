@@ -95,6 +95,17 @@
                 color: #aaf;
             }
         }
+        .citation-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .citation-list li {
+            margin-bottom: 8px;
+        }
+        .snippet {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
         details {
             margin-top: 15px;
             padding-top: 15px;
@@ -148,6 +159,11 @@
             document.getElementById('question').value = q;
         }
 
+        function esc(s) {
+            return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
         document.getElementById('ask-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const q = document.getElementById('question').value;
@@ -178,13 +194,20 @@
                 // Format answer
                 let ansHtml = marked.parse(data.answer_markdown);
                 
-                // Add citations if available
+                // Citations: only reviews/SQL that a finding actually cites, one per line
                 if (data.citations && data.citations.length > 0) {
-                    ansHtml += '<p><strong>Citations:</strong></p><div>';
+                    ansHtml += '<p><strong>Citations</strong></p><ul class="citation-list">';
                     data.citations.forEach(c => {
-                        ansHtml += `<span class="citation" title="${c.snippet || c.label || ''}">${c.id}</span>`;
+                        if (c.type === 'review') {
+                            const meta = [c.game, c.date, c.rating != null ? `${c.rating}\u2605` : null]
+                                .filter(Boolean).join(' \u00b7 ');
+                            ansHtml += `<li><span class="citation">${esc(c.id)}</span> ${esc(meta)}` +
+                                `<div class="snippet">${esc(c.snippet || '')}</div></li>`;
+                        } else {
+                            ansHtml += `<li><span class="citation">${esc(c.id)}</span> ${esc(c.label || '')}</li>`;
+                        }
                     });
-                    ansHtml += '</div>';
+                    ansHtml += '</ul>';
                 }
                 
                 document.getElementById('answer-content').innerHTML = ansHtml;
@@ -194,23 +217,29 @@
                 if (data.sql && data.sql.length > 0) {
                     evHtml += '<h4>SQL</h4>';
                     data.sql.forEach(s => {
-                        evHtml += `<pre><code>${s.query}</code></pre>`;
+                        evHtml += `<pre><code>${esc(s.query)}</code></pre>`;
                         if (s.rows_preview && s.rows_preview.length > 0) {
-                            evHtml += `<p>Preview rows: ${JSON.stringify(s.rows_preview)}</p>`;
+                            evHtml += `<p>Preview rows: ${esc(JSON.stringify(s.rows_preview))}</p>`;
                         }
                     });
                 }
                 if (data.retrieved && data.retrieved.length > 0) {
-                    evHtml += '<h4>Retrieved Reviews</h4><ul>';
+                    evHtml += '<h4>Other retrieved reviews (not cited)</h4><ul>';
                     data.retrieved.forEach(r => {
-                        evHtml += `<li><strong>${r.review_id}</strong> (score: ${r.score.toFixed(2)}): ${r.snippet}</li>`;
+                        const meta = [r.game, r.date || r.review_date, r.rating != null ? `${r.rating}\u2605` : null]
+                            .filter(Boolean).join(' \u00b7 ');
+                        const score = (r.rank_score != null ? r.rank_score : r.score);
+                        const scoreText = (typeof score === 'number') ? score.toFixed(2) : (score || 'N/A');
+                        const snippet = r.snippet || r.text || '';
+                        evHtml += `<li><strong>${esc(r.review_id || r.id || '')}</strong> ${esc(meta)} ` +
+                            `(rank score: ${esc(scoreText)}): ${esc(snippet)}</li>`;
                     });
                     evHtml += '</ul>';
                 }
                 if (data.trace) {
                     evHtml += '<h4>Trace</h4><ul>';
                     data.trace.forEach(t => {
-                        evHtml += `<li><strong>${t.node}</strong> (${t.duration_ms}ms): ${t.summary}</li>`;
+                        evHtml += `<li><strong>${esc(t.node)}</strong> (${t.duration_ms}ms): ${esc(t.summary)}</li>`;
                     });
                     evHtml += '</ul>';
                 }

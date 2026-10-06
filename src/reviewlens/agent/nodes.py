@@ -2,12 +2,14 @@
 
 import asyncio
 import json
+import re
 import time
 from typing import Any
 
 from pydantic import BaseModel
 
 from reviewlens.agent.evidence import format_evidence, valid_evidence_ids
+from reviewlens.agent.query import clean_docs_query
 from reviewlens.agent.state import AgentState
 from reviewlens.config import Settings
 from reviewlens.llm.budget import BudgetedLLM, LLMBudgetExceeded
@@ -28,6 +30,10 @@ from reviewlens.sql.generate import SQLGenerator
 from reviewlens.warehouse.catalog import meta_text
 
 UNVERIFIED_CAVEAT = "Evidence could not be verified."
+CITED_REVIEWS_PREFIX = "Findings are based on "
+CITED_GAMES_PREFIX = "Cited reviews cover: "
+CITED_RATINGS_PREFIX = "Rating distribution of cited reviews: "
+SMALL_SAMPLE_SQL_CAVEAT = "Some reported results are based on fewer than 30 reviews."
 
 
 class DocsQueryResponse(BaseModel):
@@ -233,6 +239,19 @@ async def docs_tool_node(state: AgentState, ctx: AgentContext) -> dict[str, Any]
                 if dqr.rating_max is not None:
                     filters.rating_max = _clamp_rating(dqr.rating_max)
 
+    # Backstop: strip generic words (feedback, complaints, players, say, ...) the planner
+    # may have left in the query; they match unrelated reviews.
+    cleaned_query = clean_docs_query(query, fallback=plan.standalone_question)
+    if cleaned_query != query:
+        trace_events.append(
+            TraceEvent(
+                node="docs_tool",
+                duration_ms=0,
+                summary=f"Removed generic words from docs query: {query!r} -> {cleaned_query!r}.",
+            )
+        )
+        query = cleaned_query
+
     # Retrieval
     def do_search(flt: Filters) -> list[RetrievedReview]:
         return search(
@@ -380,6 +399,71 @@ async def synthesize_node(state: AgentState, ctx: AgentContext) -> dict[str, Any
     return {"final_answer": ans, "evidence": evidence, "trace": trace, "usage": usage}
 
 
+def distinct_cited_reviews(ans: FinalAnswer) -> list[str]:
+    """Distinct review evidence ids cited by the findings, in first-cited order."""
+    seen: dict[str, None] = {}
+    for f in ans.findings:
+        for eid in f.evidence_ids:
+            if eid.startswith("REV:"):
+                seen.setdefault(eid, None)
+    return list(seen)
+
+
+def cited_reviews_caveat(n: int) -> str:
+    noun = "review" if n == 1 else "reviews"
+    return f"{CITED_REVIEWS_PREFIX}{n} distinct {noun}."
+
+
+def cited_games_caveat(game_counts: dict[str, int]) -> str:
+    """Deterministic caveat listing games cited and counts, sorted alphabetically."""
+    items = [f"{g} ({c})" for g, c in sorted(game_counts.items())]
+    return f"{CITED_GAMES_PREFIX}{', '.join(items)}."
+
+
+def cited_ratings_caveat(rating_counts: dict[int, int]) -> str:
+    """Deterministic caveat listing 1★ through 5★ rating distribution of cited reviews."""
+    items = [f"{star}★: {rating_counts.get(star, 0)}" for star in range(1, 6)]
+    return f"{CITED_RATINGS_PREFIX}{', '.join(items)}."
+
+
+def has_sql_row_below_threshold(sql_res: Any, threshold: int = 30) -> bool:
+    """Return True if any row in SQL result has a count column value below threshold."""
+    if not sql_res:
+        return False
+    columns = getattr(sql_res, "columns", None)
+    if columns is None and isinstance(sql_res, dict):
+        columns = sql_res.get("columns")
+    rows = getattr(sql_res, "rows", None)
+    if rows is None and isinstance(sql_res, dict):
+        rows = sql_res.get("rows")
+    if not columns or not rows:
+        return False
+
+    count_indices: list[int] = []
+    for idx, col in enumerate(columns):
+        col_lower = str(col).lower()
+        if "count" in col_lower or col_lower in (
+            "cnt",
+            "n",
+            "num_reviews",
+            "review_count",
+            "total_reviews",
+            "reviews",
+        ):
+            count_indices.append(idx)
+
+    if not count_indices:
+        return False
+
+    for row in rows:
+        for idx in count_indices:
+            if idx < len(row):
+                val = row[idx]
+                if isinstance(val, (int, float)) and val < threshold:
+                    return True
+    return False
+
+
 def verify_node(state: AgentState, ctx: AgentContext) -> dict[str, Any]:
     """Node: verify citations (pure Python, no retry loop)."""
     t0 = time.monotonic()
@@ -400,6 +484,57 @@ def verify_node(state: AgentState, ctx: AgentContext) -> dict[str, Any]:
 
     if not ans.summary.strip():
         ans.summary = "Summary generation failed."
+
+    # Deterministic caveats: distinct reviews, games, and rating distribution.
+    plan = state.get("plan")
+    cited_reviews = distinct_cited_reviews(ans)
+    if cited_reviews or (plan is not None and Tool.DOCS in plan.tools):
+        ans.caveats = [
+            c
+            for c in ans.caveats
+            if not c.startswith(CITED_REVIEWS_PREFIX)
+            and not c.startswith(CITED_GAMES_PREFIX)
+            and not c.startswith(CITED_RATINGS_PREFIX)
+        ]
+        ans.caveats.append(cited_reviews_caveat(len(cited_reviews)))
+
+        if cited_reviews:
+            docs = state.get("docs_result") or []
+            meta_by_id: dict[str, tuple[str, int]] = {
+                d.review_id: (d.game, d.rating) for d in docs if d.review_id
+            }
+            evidence_text = state.get("evidence") or ""
+            if evidence_text:
+                for match in re.finditer(
+                    r"\[REV:(?P<id>[^\s\]]+)\]\s*(?P<game>[^|]+?)\s*\|\s*[^|]+?\|\s*(?P<rating>[1-5])★",
+                    evidence_text,
+                ):
+                    rid = match.group("id")
+                    if rid not in meta_by_id:
+                        meta_by_id[rid] = (match.group("game").strip(), int(match.group("rating")))
+
+            game_counts: dict[str, int] = {}
+            rating_counts: dict[int, int] = {}
+            for eid in cited_reviews:
+                rid = eid[4:] if eid.startswith("REV:") else eid
+                if rid in meta_by_id:
+                    game, rating = meta_by_id[rid]
+                    game_counts[game] = game_counts.get(game, 0) + 1
+                    rating_counts[rating] = rating_counts.get(rating, 0) + 1
+
+            if game_counts:
+                ans.caveats.append(cited_games_caveat(game_counts))
+            if rating_counts:
+                ans.caveats.append(cited_ratings_caveat(rating_counts))
+
+    # Deterministic caveat when any SQL result row has a count below 30
+    ans.caveats = [c for c in ans.caveats if c != SMALL_SAMPLE_SQL_CAVEAT]
+    sql_result = state.get("sql_result")
+    sql_res = getattr(sql_result, "result", None) if sql_result else None
+    if sql_res is None and isinstance(sql_result, dict):
+        sql_res = sql_result.get("result")
+    if has_sql_row_below_threshold(sql_res, threshold=30):
+        ans.caveats.append(SMALL_SAMPLE_SQL_CAVEAT)
 
     duration = int((time.monotonic() - t0) * 1000)
     return {

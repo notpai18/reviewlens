@@ -1,0 +1,219 @@
+{
+  "request_id": "a9ea7b77-f2e8-4a52-9966-4f8a56adf1a2",
+  "answer_markdown": "Players from multiple games report that the battery drains quickly during gameplay. Specifically, reviewers of Marvel Snap and Cookie Run: Kingdom mention high battery consumption.\n\n**Findings**\n- *Players say:* For Marvel Snap, a reviewer mentions a low-fi battery saver mode would be nice. [REV:b77b7bd1-7134-40ed-a3e5-83cf5db1f596]\n- *Players say:* For Marvel Snap, a reviewer states the game drains a lot of battery and causes lag. [REV:81ea3030-f55f-4e25-a0bb-0296bc056678]\n- *Players say:* For Marvel Snap, a reviewer notes the battery issue is still present and draining rapidly. [REV:45931de1-7e88-4805-ae95-d440d781f597]\n- *Players say:* For Cookie Run: Kingdom, several retrieved reviews mention that the game drains or eats at the battery. [REV:c9ab45bd-6491-4d6d-9be0-6f75dc1c708d] [REV:9f253e53-4c60-457a-83ea-44cbaa29cc46] [REV:a082c6cb-c207-4282-a563-c3db765fb47e]\n\n**Caveats**\n- Findings are based on 6 distinct reviews.\n- Cited reviews cover: Cookie Run: Kingdom (3), Marvel Snap (3).\n- Rating distribution of cited reviews: 1\u2605: 1, 2\u2605: 0, 3\u2605: 0, 4\u2605: 0, 5\u2605: 5.\n\n**You could also ask**\n- What specific device models are experiencing the most battery drain in Marvel Snap?\n- Are there any recent updates addressing battery consumption in Cookie Run: Kingdom?\n- How do players rate the overall performance apart from battery usage?",
+  "answer": {
+    "summary": "Players from multiple games report that the battery drains quickly during gameplay. Specifically, reviewers of Marvel Snap and Cookie Run: Kingdom mention high battery consumption.",
+    "findings": [
+      {
+        "statement": "For Marvel Snap, a reviewer mentions a low-fi battery saver mode would be nice.",
+        "evidence_ids": [
+          "REV:b77b7bd1-7134-40ed-a3e5-83cf5db1f596"
+        ],
+        "kind": "player_feedback"
+      },
+      {
+        "statement": "For Marvel Snap, a reviewer states the game drains a lot of battery and causes lag.",
+        "evidence_ids": [
+          "REV:81ea3030-f55f-4e25-a0bb-0296bc056678"
+        ],
+        "kind": "player_feedback"
+      },
+      {
+        "statement": "For Marvel Snap, a reviewer notes the battery issue is still present and draining rapidly.",
+        "evidence_ids": [
+          "REV:45931de1-7e88-4805-ae95-d440d781f597"
+        ],
+        "kind": "player_feedback"
+      },
+      {
+        "statement": "For Cookie Run: Kingdom, several retrieved reviews mention that the game drains or eats at the battery.",
+        "evidence_ids": [
+          "REV:c9ab45bd-6491-4d6d-9be0-6f75dc1c708d",
+          "REV:9f253e53-4c60-457a-83ea-44cbaa29cc46",
+          "REV:a082c6cb-c207-4282-a563-c3db765fb47e"
+        ],
+        "kind": "player_feedback"
+      }
+    ],
+    "caveats": [
+      "Findings are based on 6 distinct reviews.",
+      "Cited reviews cover: Cookie Run: Kingdom (3), Marvel Snap (3).",
+      "Rating distribution of cited reviews: 1\u2605: 1, 2\u2605: 0, 3\u2605: 0, 4\u2605: 0, 5\u2605: 5."
+    ],
+    "followups": [
+      "What specific device models are experiencing the most battery drain in Marvel Snap?",
+      "Are there any recent updates addressing battery consumption in Cookie Run: Kingdom?",
+      "How do players rate the overall performance apart from battery usage?"
+    ]
+  },
+  "citations": [
+    {
+      "id": "REV:b77b7bd1-7134-40ed-a3e5-83cf5db1f596",
+      "type": "review",
+      "label": null,
+      "snippet": "A low-fi battery saver mode would be nice",
+      "game": "Marvel Snap",
+      "date": "2025-09-26",
+      "rating": 5
+    },
+    {
+      "id": "REV:c9ab45bd-6491-4d6d-9be0-6f75dc1c708d",
+      "type": "review",
+      "label": null,
+      "snippet": "I love CR:K,but it sometimes drains me and the battery a LOT but other that it's fun to play!!",
+      "game": "Cookie Run: Kingdom",
+      "date": "2026-07-19",
+      "rating": 5
+    },
+    {
+      "id": "REV:81ea3030-f55f-4e25-a0bb-0296bc056678",
+      "type": "review",
+      "label": null,
+      "snippet": "lag a lot please optimise it it lag more than call of duty on this device also drain a lot of battery",
+      "game": "Marvel Snap",
+      "date": "2025-03-05",
+      "rating": 5
+    },
+    {
+      "id": "REV:45931de1-7e88-4805-ae95-d440d781f597",
+      "type": "review",
+      "label": null,
+      "snippet": "edit: dec 2025. the battery issue is still there. it is draining like nobody's business. and the game is on a literal downhill now sorry",
+      "game": "Marvel Snap",
+      "date": "2025-12-10",
+      "rating": 1
+    },
+    {
+      "id": "REV:89f91375-5bde-4aaf-9a2e-83a13b0d3b41",
+      "type": "review",
+      "label": null,
+      "snippet": "my only concern is why make a game \ud83c\udfae \ud83e\udd14 that \ud83d\udd25 battery,crashes the whole game, and interrupts game play in the process of that there's lot of unnecessary bugs people not even on the game just a lot of ",
+      "game": "Marvel Snap",
+      "date": "2025-10-21",
+      "rating": 5
+    },
+    {
+      "id": "REV:9f253e53-4c60-457a-83ea-44cbaa29cc46",
+      "type": "review",
+      "label": null,
+      "snippet": "It's AMAZING!!!!! All of the cookies and their designs are beautiful!!!! And the tools used to help are so useful!!! It drains your battery but the game is SO WORTH IT!!!!!!",
+      "game": "Cookie Run: Kingdom",
+      "date": "2026-07-26",
+      "rating": 5
+    },
+    {
+      "id": "REV:a082c6cb-c207-4282-a563-c3db765fb47e",
+      "type": "review",
+      "label": null,
+      "snippet": "Eats at your battery and storage, but that's about all the downsides. Free to play friendly (to a point), beautiful characters, and interesting stories are all part of this game, and I highly recommen",
+      "game": "Cookie Run: Kingdom",
+      "date": "2026-08-12",
+      "rating": 5
+    },
+    {
+      "id": "REV:4c43d233-9365-40f1-b81f-48fb4163fb1c",
+      "type": "review",
+      "label": null,
+      "snippet": "usureros con el high voltage. Cambiar\u00e9 mi review si esto lo arreglan, pero mal por ello",
+      "game": "Marvel Snap",
+      "date": "2025-06-18",
+      "rating": 1
+    }
+  ],
+  "sql": [],
+  "retrieved": [
+    {
+      "review_id": "b77b7bd1-7134-40ed-a3e5-83cf5db1f596",
+      "rank_score": 1.0,
+      "snippet": "A low-fi battery saver mode would be nice",
+      "game": "Marvel Snap",
+      "date": "2025-09-26",
+      "rating": 5
+    },
+    {
+      "review_id": "c9ab45bd-6491-4d6d-9be0-6f75dc1c708d",
+      "rank_score": 0.53333336,
+      "snippet": "I love CR:K,but it sometimes drains me and the battery a LOT but other that it's fun to play!!",
+      "game": "Cookie Run: Kingdom",
+      "date": "2026-07-19",
+      "rating": 5
+    },
+    {
+      "review_id": "81ea3030-f55f-4e25-a0bb-0296bc056678",
+      "rank_score": 0.5,
+      "snippet": "lag a lot please optimise it it lag more than call of duty on this device also drain a lot of battery",
+      "game": "Marvel Snap",
+      "date": "2025-03-05",
+      "rating": 5
+    },
+    {
+      "review_id": "45931de1-7e88-4805-ae95-d440d781f597",
+      "rank_score": 0.5,
+      "snippet": "edit: dec 2025. the battery issue is still there. it is draining like nobody's business. and the game is on a literal downhill now sorry",
+      "game": "Marvel Snap",
+      "date": "2025-12-10",
+      "rating": 1
+    },
+    {
+      "review_id": "89f91375-5bde-4aaf-9a2e-83a13b0d3b41",
+      "rank_score": 0.26666668,
+      "snippet": "my only concern is why make a game \ud83c\udfae \ud83e\udd14 that \ud83d\udd25 battery,crashes the whole game, and interrupts game play in the process of that there's lot of unnecessary bugs people not even on the game just a lot of ",
+      "game": "Marvel Snap",
+      "date": "2025-10-21",
+      "rating": 5
+    },
+    {
+      "review_id": "9f253e53-4c60-457a-83ea-44cbaa29cc46",
+      "rank_score": 0.2,
+      "snippet": "It's AMAZING!!!!! All of the cookies and their designs are beautiful!!!! And the tools used to help are so useful!!! It drains your battery but the game is SO WORTH IT!!!!!!",
+      "game": "Cookie Run: Kingdom",
+      "date": "2026-07-26",
+      "rating": 5
+    },
+    {
+      "review_id": "a082c6cb-c207-4282-a563-c3db765fb47e",
+      "rank_score": 0.14285715,
+      "snippet": "Eats at your battery and storage, but that's about all the downsides. Free to play friendly (to a point), beautiful characters, and interesting stories are all part of this game, and I highly recommen",
+      "game": "Cookie Run: Kingdom",
+      "date": "2026-08-12",
+      "rating": 5
+    },
+    {
+      "review_id": "4c43d233-9365-40f1-b81f-48fb4163fb1c",
+      "rank_score": 0.14285715,
+      "snippet": "usureros con el high voltage. Cambiar\u00e9 mi review si esto lo arreglan, pero mal por ello",
+      "game": "Marvel Snap",
+      "date": "2025-06-18",
+      "rating": 1
+    }
+  ],
+  "trace": [
+    {
+      "node": "plan",
+      "duration_ms": 2901,
+      "summary": "intent=analytics, tools=['docs']"
+    },
+    {
+      "node": "docs_tool",
+      "duration_ms": 1265,
+      "summary": "Retrieved 8 documents (query='battery')."
+    },
+    {
+      "node": "synthesize",
+      "duration_ms": 3641,
+      "summary": "Synthesized answer."
+    },
+    {
+      "node": "verify",
+      "duration_ms": 0,
+      "summary": "Verified findings: 4 kept, 0 dropped."
+    }
+  ],
+  "usage": {
+    "llm_calls": 2,
+    "prompt_tokens": 2408,
+    "completion_tokens": 606,
+    "latency_ms": 6542
+  },
+  "cached": false
+}

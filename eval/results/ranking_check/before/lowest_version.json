@@ -1,0 +1,1517 @@
+{
+  "question_key": "lowest_version",
+  "question": "What is the lowest rated version?",
+  "mode": "before",
+  "final_sql": "SELECT game, app_version, ROUND(AVG(rating), 2) AS avg_rating, COUNT(*) AS review_count FROM reviews WHERE NOT app_version IS NULL GROUP BY game, app_version ORDER BY avg_rating ASC LIMIT 500",
+  "sql_columns": [
+    "game",
+    "app_version",
+    "avg_rating",
+    "review_count"
+  ],
+  "sql_rows": [
+    [
+      "Marvel Snap",
+      "15.17.0",
+      1.0,
+      3
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "2.0.302",
+      1.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "1.1.42",
+      1.0,
+      1
+    ],
+    [
+      "Marvel Snap",
+      "2.0.2",
+      1.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "5.5.205",
+      1.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "3.8.002",
+      1.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.1.205",
+      1.0,
+      3
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.5.002",
+      1.0,
+      2
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.5.305",
+      1.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "3.6.002",
+      1.0,
+      1
+    ],
+    [
+      "Marvel Snap",
+      "17.18.0",
+      1.0,
+      5
+    ],
+    [
+      "Marvel Snap",
+      "21.24.0",
+      1.0,
+      3
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.7.105",
+      1.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "5.6.202",
+      1.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "5.13.205",
+      1.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "2.4.102",
+      1.0,
+      1
+    ],
+    [
+      "Marvel Snap",
+      "7.6.1",
+      1.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "4.5.202",
+      1.0,
+      1
+    ],
+    [
+      "Marvel Snap",
+      "13.13.2",
+      1.0,
+      1
+    ],
+    [
+      "Marvel Snap",
+      "28.21.0",
+      1.13,
+      8
+    ],
+    [
+      "Marvel Snap",
+      "20.22.1",
+      1.29,
+      7
+    ],
+    [
+      "Marvel Snap",
+      "41.11.1",
+      1.31,
+      609
+    ],
+    [
+      "Marvel Snap",
+      "14.17.0",
+      1.32,
+      19
+    ],
+    [
+      "Marvel Snap",
+      "15.16.0",
+      1.33,
+      6
+    ],
+    [
+      "Marvel Snap",
+      "34.11.4",
+      1.33,
+      1137
+    ],
+    [
+      "Marvel Snap",
+      "20.23.0",
+      1.33,
+      18
+    ],
+    [
+      "Marvel Snap",
+      "27.18.1",
+      1.33,
+      21
+    ],
+    [
+      "Marvel Snap",
+      "32.15.3",
+      1.36,
+      14
+    ],
+    [
+      "Marvel Snap",
+      "32.16.0",
+      1.38,
+      16
+    ],
+    [
+      "Marvel Snap",
+      "9.16.0",
+      1.38,
+      48
+    ],
+    [
+      "Marvel Snap",
+      "11.18.1",
+      1.41,
+      22
+    ],
+    [
+      "Marvel Snap",
+      "8.7.1",
+      1.47,
+      77
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.9.005",
+      1.5,
+      2
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.11.105",
+      1.5,
+      2
+    ],
+    [
+      "Marvel Snap",
+      "29.12.0",
+      1.5,
+      16
+    ],
+    [
+      "Marvel Snap",
+      "25.19.8",
+      1.5,
+      10
+    ],
+    [
+      "Marvel Snap",
+      "19.19.0",
+      1.5,
+      8
+    ],
+    [
+      "Marvel Snap",
+      "23.27.5",
+      1.52,
+      21
+    ],
+    [
+      "Marvel Snap",
+      "7.6.5",
+      1.52,
+      25
+    ],
+    [
+      "Marvel Snap",
+      "10.13.3",
+      1.53,
+      15
+    ],
+    [
+      "Marvel Snap",
+      "28.21.4",
+      1.53,
+      15
+    ],
+    [
+      "Marvel Snap",
+      "31.7.3",
+      1.54,
+      13
+    ],
+    [
+      "Marvel Snap",
+      "16.14.1",
+      1.57,
+      21
+    ],
+    [
+      "Marvel Snap",
+      "18.7.7",
+      1.57,
+      14
+    ],
+    [
+      "Marvel Snap",
+      "22.29.0",
+      1.58,
+      19
+    ],
+    [
+      "Marvel Snap",
+      "22.28.0",
+      1.58,
+      12
+    ],
+    [
+      "Marvel Snap",
+      "21.23.2",
+      1.6,
+      30
+    ],
+    [
+      "Marvel Snap",
+      "43.11.0",
+      1.61,
+      49
+    ],
+    [
+      "Marvel Snap",
+      "26.20.2",
+      1.63,
+      8
+    ],
+    [
+      "Marvel Snap",
+      "30.22.4",
+      1.64,
+      11
+    ],
+    [
+      "Marvel Snap",
+      "25.19.1",
+      1.65,
+      17
+    ],
+    [
+      "Marvel Snap",
+      "42.6.2",
+      1.66,
+      231
+    ],
+    [
+      "Marvel Snap",
+      "19.18.0",
+      1.67,
+      12
+    ],
+    [
+      "Marvel Snap",
+      "17.17.0",
+      1.69,
+      16
+    ],
+    [
+      "Marvel Snap",
+      "13.13.3",
+      1.69,
+      16
+    ],
+    [
+      "Marvel Snap",
+      "31.8.0",
+      1.71,
+      17
+    ],
+    [
+      "Marvel Snap",
+      "24.20.4",
+      1.74,
+      35
+    ],
+    [
+      "Marvel Snap",
+      "12.12.2",
+      1.78,
+      23
+    ],
+    [
+      "Marvel Snap",
+      "26.22.0",
+      1.83,
+      18
+    ],
+    [
+      "Marvel Snap",
+      "35.21.2",
+      1.85,
+      124
+    ],
+    [
+      "Marvel Snap",
+      "48.10.2",
+      1.86,
+      105
+    ],
+    [
+      "Marvel Snap",
+      "18.7.3",
+      1.86,
+      7
+    ],
+    [
+      "Marvel Snap",
+      "27.19.0",
+      1.89,
+      9
+    ],
+    [
+      "Marvel Snap",
+      "29.11.1",
+      1.95,
+      21
+    ],
+    [
+      "Marvel Snap",
+      "43.12.0",
+      1.96,
+      189
+    ],
+    [
+      "Marvel Snap",
+      "33.16.1",
+      2.0,
+      57
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.7.305",
+      2.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.6.102",
+      2.0,
+      2
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.6.205",
+      2.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.12.102",
+      2.0,
+      6
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "4.15.002",
+      2.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.12.005",
+      2.0,
+      3
+    ],
+    [
+      "Marvel Snap",
+      "48.10.0",
+      2.1,
+      10
+    ],
+    [
+      "Marvel Snap",
+      "52.8.0",
+      2.13,
+      86
+    ],
+    [
+      "Marvel Snap",
+      "15.15.2",
+      2.14,
+      7
+    ],
+    [
+      "Marvel Snap",
+      "44.16.0",
+      2.21,
+      145
+    ],
+    [
+      "Marvel Snap",
+      "35.21.8",
+      2.23,
+      155
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.10.005",
+      2.25,
+      4
+    ],
+    [
+      "Marvel Snap",
+      "47.15.3",
+      2.26,
+      86
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "5.9.002",
+      2.33,
+      3
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "5.1.102",
+      2.33,
+      3
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "5.13.302",
+      2.33,
+      3
+    ],
+    [
+      "Marvel Snap",
+      "40.11.0",
+      2.37,
+      115
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.11.102",
+      2.43,
+      7
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "2.7.202",
+      2.5,
+      2
+    ],
+    [
+      "Marvel Snap",
+      "50.13.2",
+      2.5,
+      64
+    ],
+    [
+      "Marvel Snap",
+      "40.10.1",
+      2.56,
+      104
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.5.302",
+      2.57,
+      7
+    ],
+    [
+      "Marvel Snap",
+      "47.15.7",
+      2.58,
+      50
+    ],
+    [
+      "Marvel Snap",
+      "34.11.1",
+      2.62,
+      13
+    ],
+    [
+      "Marvel Snap",
+      "37.19.3",
+      2.64,
+      53
+    ],
+    [
+      "Marvel Snap",
+      "36.11.1",
+      2.66,
+      71
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.7.402",
+      2.67,
+      3
+    ],
+    [
+      "Marvel Snap",
+      "45.18.0",
+      2.67,
+      106
+    ],
+    [
+      "Marvel Snap",
+      "46.18.0",
+      2.69,
+      166
+    ],
+    [
+      "Marvel Snap",
+      "36.11.5",
+      2.73,
+      90
+    ],
+    [
+      "Marvel Snap",
+      "50.13.21",
+      2.73,
+      89
+    ],
+    [
+      "Marvel Snap",
+      "49.5.0",
+      2.74,
+      230
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.6.002",
+      2.75,
+      4
+    ],
+    [
+      "Marvel Snap",
+      "52.8.33",
+      2.75,
+      16
+    ],
+    [
+      "Marvel Snap",
+      "39.6.1",
+      2.82,
+      139
+    ],
+    [
+      "Marvel Snap",
+      "37.20.0",
+      2.84,
+      74
+    ],
+    [
+      "Marvel Snap",
+      "38.12.4",
+      2.84,
+      61
+    ],
+    [
+      "Marvel Snap",
+      "47.15.0",
+      2.88,
+      8
+    ],
+    [
+      "Marvel Snap",
+      "41.10.1",
+      2.89,
+      54
+    ],
+    [
+      "Marvel Snap",
+      "45.19.0",
+      2.92,
+      50
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "5.10.102",
+      3.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.3.105",
+      3.0,
+      4
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "4.15.102",
+      3.0,
+      2
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.11.002",
+      3.0,
+      4
+    ],
+    [
+      "Marvel Snap",
+      "4.6.2",
+      3.0,
+      2
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.7.405",
+      3.0,
+      2
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "3.5.002",
+      3.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.1.002",
+      3.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.0.302",
+      3.0,
+      2
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "4.2.202",
+      3.0,
+      2
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.1.205",
+      3.0,
+      7
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "5.12.105",
+      3.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "2.4.402",
+      3.0,
+      1
+    ],
+    [
+      "Marvel Snap",
+      "6.9.1",
+      3.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "3.12.002",
+      3.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "3.9.102",
+      3.0,
+      3
+    ],
+    [
+      "Marvel Snap",
+      "52.8.32",
+      3.0,
+      16
+    ],
+    [
+      "Marvel Snap",
+      "57.17.0",
+      3.03,
+      137
+    ],
+    [
+      "Marvel Snap",
+      "51.11.10",
+      3.04,
+      23
+    ],
+    [
+      "Marvel Snap",
+      "38.13.0",
+      3.05,
+      95
+    ],
+    [
+      "Marvel Snap",
+      "55.8.2",
+      3.1,
+      104
+    ],
+    [
+      "Marvel Snap",
+      "56.4.22",
+      3.14,
+      136
+    ],
+    [
+      "Marvel Snap",
+      "38.12.1",
+      3.22,
+      18
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.9.002",
+      3.36,
+      14
+    ],
+    [
+      "Marvel Snap",
+      "56.4.0",
+      3.42,
+      12
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.1.102",
+      3.43,
+      7
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.4.102",
+      3.43,
+      14
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.2.002",
+      3.45,
+      22
+    ],
+    [
+      "Marvel Snap",
+      "54.12.1",
+      3.48,
+      167
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "5.11.002",
+      3.5,
+      2
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.1.002",
+      3.5,
+      2
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.7.302",
+      3.5,
+      2
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.5.005",
+      3.5,
+      2
+    ],
+    [
+      "Marvel Snap",
+      "55.8.35",
+      3.5,
+      88
+    ],
+    [
+      "Marvel Snap",
+      "51.11.32",
+      3.53,
+      72
+    ],
+    [
+      "Marvel Snap",
+      "52.9.0",
+      3.61,
+      176
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.1.202",
+      3.63,
+      8
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.10.002",
+      3.63,
+      8
+    ],
+    [
+      "Marvel Snap",
+      "51.11.11",
+      3.63,
+      82
+    ],
+    [
+      "Marvel Snap",
+      "53.15.1",
+      3.65,
+      40
+    ],
+    [
+      "Marvel Snap",
+      "56.4.1",
+      3.74,
+      135
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.6.202",
+      3.75,
+      4
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.1.202",
+      3.78,
+      9
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.10.102",
+      3.78,
+      9
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.3.002",
+      3.8,
+      5
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.11.202",
+      3.8,
+      5
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.9.102",
+      3.8,
+      5
+    ],
+    [
+      "Marvel Snap",
+      "53.15.12",
+      3.85,
+      202
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.4.205",
+      3.98,
+      47
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.11.205",
+      4.0,
+      2
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "5.4.305",
+      4.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.10.105",
+      4.0,
+      4
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.6.005",
+      4.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.5.202",
+      4.0,
+      6
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.0.105",
+      4.0,
+      4
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.9.105",
+      4.0,
+      35
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.12.105",
+      4.0,
+      4
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "5.11.005",
+      4.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.2.002",
+      4.0,
+      2
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.0.402",
+      4.0,
+      2
+    ],
+    [
+      "Marvel Snap",
+      "3.0.5",
+      4.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "5.5.102",
+      4.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.3.105",
+      4.07,
+      14
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.2.005",
+      4.09,
+      11
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.2.102",
+      4.14,
+      7
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.5.102",
+      4.17,
+      143
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.3.102",
+      4.18,
+      56
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.6.005",
+      4.21,
+      42
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.5.302",
+      4.21,
+      197
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.8.202",
+      4.23,
+      13
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.4.002",
+      4.25,
+      8
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.4.305",
+      4.26,
+      47
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.4.105",
+      4.28,
+      61
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.3.002",
+      4.28,
+      18
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.5.402",
+      4.31,
+      483
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.5.305",
+      4.33,
+      39
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.3.102",
+      4.4,
+      10
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.3.005",
+      4.44,
+      9
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.6.102",
+      4.47,
+      248
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.9.005",
+      4.47,
+      15
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.5.105",
+      4.48,
+      31
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.7.202",
+      4.49,
+      272
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.0.205",
+      4.5,
+      4
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.4.105",
+      4.5,
+      2
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.1.105",
+      4.5,
+      4
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.0.002",
+      4.5,
+      2
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.7.102",
+      4.5,
+      2
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.9.002",
+      4.51,
+      70
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.6.105",
+      4.51,
+      53
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.5.205",
+      4.56,
+      80
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.0.102",
+      4.56,
+      9
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.6.002",
+      4.57,
+      174
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.7.302",
+      4.57,
+      259
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.6.202",
+      4.58,
+      372
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.5.202",
+      4.6,
+      301
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.5.405",
+      4.6,
+      68
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.6.205",
+      4.62,
+      60
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.8.005",
+      4.63,
+      64
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.4.302",
+      4.63,
+      434
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.7.505",
+      4.64,
+      99
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.4.102",
+      4.65,
+      429
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.4.202",
+      4.65,
+      262
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.9.102",
+      4.68,
+      192
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.7.205",
+      4.69,
+      58
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.7.305",
+      4.71,
+      48
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.8.002",
+      4.71,
+      369
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.4.002",
+      4.71,
+      207
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.7.502",
+      4.72,
+      514
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.8.102",
+      4.73,
+      385
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.4.005",
+      4.81,
+      21
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.8.105",
+      4.89,
+      56
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "5.9.102",
+      5.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.8.005",
+      5.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.7.002",
+      5.0,
+      2
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.0.202",
+      5.0,
+      7
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "4.13.002",
+      5.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "2.3.202",
+      5.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.2.105",
+      5.0,
+      2
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "5.2.002",
+      5.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.1.102",
+      5.0,
+      3
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "7.0.005",
+      5.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.12.002",
+      5.0,
+      3
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.6.105",
+      5.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "4.5.002",
+      5.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "3.7.202",
+      5.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.2.005",
+      5.0,
+      2
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "4.9.102",
+      5.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "1.1.72",
+      5.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "5.7.002",
+      5.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.8.102",
+      5.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.8.002",
+      5.0,
+      3
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "4.4.002",
+      5.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "4.2.002",
+      5.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.0.405",
+      5.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "1.3.502",
+      5.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "3.0.002",
+      5.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "6.8.205",
+      5.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "3.2.002",
+      5.0,
+      1
+    ],
+    [
+      "Cookie Run: Kingdom",
+      "3.11.102",
+      5.0,
+      1
+    ]
+  ],
+  "sql_attempts": [
+    {
+      "attempt": 1,
+      "status": "success",
+      "sql": "SELECT game, app_version, ROUND(AVG(rating), 2) AS avg_rating, COUNT(*) AS review_count FROM reviews WHERE NOT app_version IS NULL GROUP BY game, app_version ORDER BY avg_rating ASC LIMIT 500",
+      "error": null
+    }
+  ],
+  "final_answer": {
+    "summary": "Multiple versions across games share the lowest possible average rating of 1.0. These include versions from both Marvel Snap and Cookie Run: Kingdom.",
+    "findings": [
+      {
+        "statement": "The average rating for Marvel Snap version 15.17.0 is 1.0 based on 3 reviews.",
+        "evidence_ids": [
+          "SQL#1"
+        ],
+        "kind": "observed"
+      },
+      {
+        "statement": "The average rating for Cookie Run: Kingdom version 2.0.302 is 1.0 based on 1 review.",
+        "evidence_ids": [
+          "SQL#1"
+        ],
+        "kind": "observed"
+      }
+    ],
+    "caveats": [],
+    "followups": [
+      "What are the review counts for all versions tied for the lowest average rating?",
+      "Which versions have the highest average ratings?",
+      "What are the specific player complaints for the versions with a 1.0 rating?"
+    ]
+  }
+}

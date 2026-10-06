@@ -1,0 +1,58 @@
+{
+  "question_key": "highest_version",
+  "question": "highest rated version",
+  "mode": "before",
+  "final_sql": "WITH version_ratings AS (SELECT game, app_version, AVG(CAST(rating AS REAL)) AS avg_rating, COUNT(*) AS review_count FROM reviews WHERE NOT app_version IS NULL GROUP BY game, app_version), ranked_versions AS (SELECT game, app_version, ROUND(avg_rating, 2) AS average_rating, review_count, ROW_NUMBER() OVER (PARTITION BY game ORDER BY avg_rating DESC, review_count DESC) AS rn FROM version_ratings) SELECT game, app_version, average_rating, review_count FROM ranked_versions WHERE rn = 1 ORDER BY game LIMIT 500",
+  "sql_columns": [
+    "game",
+    "app_version",
+    "average_rating",
+    "review_count"
+  ],
+  "sql_rows": [
+    [
+      "Cookie Run: Kingdom",
+      "7.0.202",
+      5.0,
+      7
+    ],
+    [
+      "Marvel Snap",
+      "3.0.5",
+      4.0,
+      1
+    ]
+  ],
+  "sql_attempts": [
+    {
+      "attempt": 1,
+      "status": "success",
+      "sql": "WITH version_ratings AS (SELECT game, app_version, AVG(CAST(rating AS REAL)) AS avg_rating, COUNT(*) AS review_count FROM reviews WHERE NOT app_version IS NULL GROUP BY game, app_version), ranked_versions AS (SELECT game, app_version, ROUND(avg_rating, 2) AS average_rating, review_count, ROW_NUMBER() OVER (PARTITION BY game ORDER BY avg_rating DESC, review_count DESC) AS rn FROM version_ratings) SELECT game, app_version, average_rating, review_count FROM ranked_versions WHERE rn = 1 ORDER BY game LIMIT 500",
+      "error": null
+    }
+  ],
+  "final_answer": {
+    "summary": "Based on the available SQL data, Cookie Run: Kingdom version 7.0.202 has the highest average rating at 5.0 with 7 reviews. Marvel Snap version 3.0.5 follows with an average rating of 4.0 based on 1 review.",
+    "findings": [
+      {
+        "statement": "Cookie Run: Kingdom version 7.0.202 achieved an average rating of 5.0 across 7 reviews.",
+        "evidence_ids": [
+          "SQL#1"
+        ],
+        "kind": "observed"
+      },
+      {
+        "statement": "Marvel Snap version 3.0.5 achieved an average rating of 4.0 across 1 review.",
+        "evidence_ids": [
+          "SQL#1"
+        ],
+        "kind": "observed"
+      }
+    ],
+    "caveats": [],
+    "followups": [
+      "What specific player feedback exists for Cookie Run: Kingdom version 7.0.202?",
+      "What specific player feedback exists for Marvel Snap version 3.0.5?"
+    ]
+  }
+}

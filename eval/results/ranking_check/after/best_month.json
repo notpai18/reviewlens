@@ -1,0 +1,164 @@
+{
+  "question_key": "best_month",
+  "question": "which month has the best rating",
+  "mode": "after",
+  "final_sql": "SELECT DATE_TRUNC('MONTH', review_date) AS review_month, ROUND(AVG(rating), 2) AS average_rating, COUNT(*) AS review_count FROM reviews GROUP BY 1 HAVING COUNT(*) >= 30 ORDER BY average_rating DESC LIMIT 500",
+  "sql_columns": [
+    "review_month",
+    "average_rating",
+    "review_count"
+  ],
+  "sql_rows": [
+    [
+      "2026-08-01T00:00:00",
+      4.32,
+      2021
+    ],
+    [
+      "2026-05-01T00:00:00",
+      4.29,
+      1786
+    ],
+    [
+      "2026-07-01T00:00:00",
+      4.25,
+      1946
+    ],
+    [
+      "2026-09-01T00:00:00",
+      4.23,
+      1456
+    ],
+    [
+      "2026-06-01T00:00:00",
+      4.11,
+      1917
+    ],
+    [
+      "2026-10-01T00:00:00",
+      3.95,
+      148
+    ],
+    [
+      "2026-03-01T00:00:00",
+      3.04,
+      239
+    ],
+    [
+      "2025-03-01T00:00:00",
+      3.0,
+      229
+    ],
+    [
+      "2025-04-01T00:00:00",
+      2.97,
+      202
+    ],
+    [
+      "2025-02-01T00:00:00",
+      2.62,
+      191
+    ],
+    [
+      "2026-04-01T00:00:00",
+      2.53,
+      231
+    ],
+    [
+      "2025-01-01T00:00:00",
+      2.46,
+      264
+    ],
+    [
+      "2026-01-01T00:00:00",
+      2.4,
+      283
+    ],
+    [
+      "2025-05-01T00:00:00",
+      2.33,
+      244
+    ],
+    [
+      "2026-02-01T00:00:00",
+      2.3,
+      230
+    ],
+    [
+      "2025-10-01T00:00:00",
+      2.23,
+      274
+    ],
+    [
+      "2025-11-01T00:00:00",
+      2.12,
+      225
+    ],
+    [
+      "2025-12-01T00:00:00",
+      2.06,
+      214
+    ],
+    [
+      "2025-09-01T00:00:00",
+      2.03,
+      285
+    ],
+    [
+      "2025-08-01T00:00:00",
+      1.87,
+      341
+    ],
+    [
+      "2025-07-01T00:00:00",
+      1.7,
+      378
+    ],
+    [
+      "2024-12-01T00:00:00",
+      1.67,
+      549
+    ],
+    [
+      "2025-06-01T00:00:00",
+      1.47,
+      914
+    ],
+    [
+      "2024-11-01T00:00:00",
+      1.32,
+      1146
+    ]
+  ],
+  "sql_attempts": [
+    {
+      "attempt": 1,
+      "status": "small_sample_guard",
+      "sql": "SELECT DATE_TRUNC('month', review_date) AS review_month, ROUND(AVG(rating), 2) AS average_rating, COUNT(*) AS review_count FROM reviews GROUP BY 1 ORDER BY average_rating DESC",
+      "error": "Small-sample ranking guard: Query has GROUP BY and ORDER BY on an average or ratio without a HAVING clause. Add HAVING COUNT(*) >= 30 (or appropriate minimum sample size) to prevent small-sample bias."
+    },
+    {
+      "attempt": 2,
+      "status": "success",
+      "sql": "SELECT DATE_TRUNC('MONTH', review_date) AS review_month, ROUND(AVG(rating), 2) AS average_rating, COUNT(*) AS review_count FROM reviews GROUP BY 1 HAVING COUNT(*) >= 30 ORDER BY average_rating DESC LIMIT 500",
+      "error": null
+    }
+  ],
+  "final_answer": {
+    "summary": "The month with the best rating across all reviews is August 2026, achieving an average rating of 4.32. This result is based on the highest average rating among all grouped months in the dataset.",
+    "findings": [
+      {
+        "statement": "August 2026 has the best rating with an average rating of 4.32 and 2021 reviews.",
+        "evidence_ids": [
+          "SQL#1"
+        ],
+        "kind": "observed"
+      }
+    ],
+    "caveats": [],
+    "followups": [
+      "What was the review count for the month with the best rating?",
+      "Which month had the lowest average rating?"
+    ]
+  }
+}

@@ -5,14 +5,14 @@ import os
 from reviewlens.config import Settings, get_settings
 
 
-def test_settings_load_from_env():
+def test_settings_load_from_env(monkeypatch):
     """Test that settings load correctly from environment variables."""
     # Test with custom env vars
-    os.environ["APP_ENV"] = "prod"
-    os.environ["GEMINI_API_KEY"] = "prod_key_12345"
-    os.environ["LLM_RPM_LIMIT"] = "20"
+    monkeypatch.setenv("APP_ENV", "prod")
+    monkeypatch.setenv("GEMINI_API_KEY", "prod_key_12345")
+    monkeypatch.setenv("LLM_RPM_LIMIT", "20")
 
-    settings = Settings()
+    settings = Settings(_env_file=None)
 
     assert settings.app_env == "prod"
     assert settings.gemini_api_key == "prod_key_12345"
@@ -22,14 +22,24 @@ def test_settings_load_from_env():
     assert settings.is_test is False
 
 
-def test_settings_defaults():
+def test_settings_defaults(monkeypatch):
     """Test default settings values."""
-    # Reset env to ensure defaults are tested
-    os.environ["GEMINI_API_KEY"] = "default_test_key"
-    os.environ["GEMINI_MODEL"] = "gemini-2.5-flash-lite"
-    os.environ["APP_ENV"] = "dev"
+    # Clear environment variables with monkeypatch to ensure defaults are tested
+    for key in list(os.environ):
+        if key.startswith("GEMINI_") or key in (
+            "APP_ENV",
+            "LLM_RPM_LIMIT",
+            "RETRIEVAL_MODE",
+            "RETRIEVAL_TOP_K",
+        ):
+            monkeypatch.delenv(key, raising=False)
 
-    settings = Settings()
+    monkeypatch.setenv("GEMINI_API_KEY", "default_test_key")
+    monkeypatch.setenv("GEMINI_API_KEYS", "")
+    monkeypatch.setenv("GEMINI_MODEL", "gemini-2.5-flash-lite")
+    monkeypatch.setenv("APP_ENV", "dev")
+
+    settings = Settings(_env_file=None)
 
     assert settings.gemini_model == "gemini-2.5-flash-lite"
     assert settings.llm_timeout_s == 45
@@ -43,14 +53,14 @@ def test_settings_defaults():
     assert settings.api_keys == ["default_test_key"]
 
     # Multiple keys test
-    settings_multi = Settings(gemini_api_key="k1, k2", gemini_api_keys="k2, k3")
+    settings_multi = Settings(_env_file=None, gemini_api_key="k1, k2", gemini_api_keys="k2, k3")
     assert settings_multi.api_keys == ["k1", "k2", "k3"]
 
 
-def test_settings_test_env():
+def test_settings_test_env(monkeypatch):
     """Test test environment properties."""
-    os.environ["APP_ENV"] = "test"
-    settings = Settings()
+    monkeypatch.setenv("APP_ENV", "test")
+    settings = Settings(_env_file=None)
     assert settings.is_test is True
     assert settings.is_production is False
     assert settings.is_development is False

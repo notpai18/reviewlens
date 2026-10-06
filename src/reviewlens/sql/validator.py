@@ -308,3 +308,67 @@ def validate_sql(
     # -----------------------------------------------------------------------
     normalized = tree.sql(dialect="duckdb")
     return _ok(normalized)
+
+
+def _is_avg_or_ratio(node: exp.Expression, select: exp.Select) -> bool:
+    """Return True if expression represents an average, ratio, or division (not a count)."""
+    if isinstance(node, exp.Count):
+        return False
+    if isinstance(node, (exp.Avg, exp.Div)):
+        return True
+    # Positional order by (e.g. ORDER BY 2)
+    if isinstance(node, exp.Literal) and node.is_int:
+        try:
+            idx = int(node.this) - 1
+            if 0 <= idx < len(select.expressions):
+                proj = select.expressions[idx]
+                inner = proj.this if isinstance(proj, exp.Alias) else proj
+                return _is_avg_or_ratio(inner, select)
+        except Exception:
+            pass
+    # Expression containing Avg or Div
+    if any(isinstance(child, (exp.Avg, exp.Div)) for child in node.walk()):
+        return True
+    # Column alias matching projection
+    if isinstance(node, (exp.Column, exp.Identifier)):
+        name = node.name.lower()
+        for proj in select.expressions:
+            if proj.alias_or_name.lower() == name:
+                inner = proj.this if isinstance(proj, exp.Alias) else proj
+                if isinstance(inner, exp.Count):
+                    return False
+                if any(isinstance(c, (exp.Avg, exp.Div)) for c in inner.walk()):
+                    return True
+                if any(
+                    k in name for k in ("avg", "average", "ratio", "rate", "mean", "pct", "percent")
+                ):
+                    if not any(isinstance(c, exp.Count) for c in inner.walk()):
+                        return True
+    return False
+
+
+def is_small_sample_ranking(sql: str) -> bool:
+    """Check if query has GROUP BY, ORDER BY on an average or ratio, and no HAVING clause.
+
+    Such queries suffer from small-sample ranking bias (e.g., a version with 1 review rated 1.0
+    wins 'lowest rated version'). They must be sent through the repair step to add a HAVING
+    clause (e.g. HAVING COUNT(*) >= 30).
+
+    Returns False if ORDER BY is COUNT(*) or count-based.
+    """
+    try:
+        ast = sqlglot.parse_one(sql, read="duckdb")
+    except Exception:
+        return False
+    for select in ast.find_all(exp.Select):
+        if not select.args.get("group"):
+            continue
+        if select.args.get("having"):
+            continue
+        order = select.args.get("order")
+        if not order:
+            continue
+        for ordered in order.expressions:
+            if _is_avg_or_ratio(ordered.this, select):
+                return True
+    return False

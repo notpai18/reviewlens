@@ -6,6 +6,8 @@ Covers: allowed, rejected, limit enforcement, normalization.
 
 from __future__ import annotations
 
+import pytest
+
 from reviewlens.sql.validator import validate_sql
 
 # ---------------------------------------------------------------------------
@@ -268,3 +270,47 @@ class TestNormalization:
             "WITH evil AS (SELECT * FROM reviews WHERE rating=1) SELECT COUNT(*) FROM evil"
         )
         assert result.ok
+
+
+# ===========================================================================
+# SMALL-SAMPLE RANKING GUARD
+# ===========================================================================
+
+
+class TestSmallSampleRankingGuard:
+    @pytest.mark.parametrize(
+        "sql",
+        [
+            "SELECT app_version, AVG(rating) as avg_r FROM reviews GROUP BY app_version ORDER BY avg_r ASC",
+            "SELECT app_version, AVG(rating) FROM reviews GROUP BY app_version ORDER BY AVG(rating) ASC",
+            "SELECT app_version, AVG(rating) FROM reviews GROUP BY app_version ORDER BY 2 ASC",
+            "SELECT date_trunc('month', review_date) as m, AVG(rating) as r FROM reviews GROUP BY m ORDER BY r DESC",
+            "SELECT game, SUM(rating) / COUNT(*) as ratio FROM reviews GROUP BY game ORDER BY ratio DESC",
+            "SELECT game, ROUND(AVG(rating), 2) as ar FROM reviews GROUP BY game ORDER BY ar DESC",
+        ],
+    )
+    def test_flags_ranking_by_avg_or_ratio_without_having(self, sql: str) -> None:
+        from reviewlens.sql.validator import is_small_sample_ranking
+
+        assert is_small_sample_ranking(sql) is True
+
+    @pytest.mark.parametrize(
+        "sql",
+        [
+            # Having clause present
+            "SELECT app_version, AVG(rating) as avg_r FROM reviews GROUP BY app_version HAVING COUNT(*) >= 30 ORDER BY avg_r ASC",
+            "SELECT game, AVG(rating) FROM reviews GROUP BY game HAVING count > 100 ORDER BY 2 DESC",
+            # ORDER BY COUNT(*) or count-based (must not trigger guard)
+            "SELECT game, COUNT(*) as c FROM reviews GROUP BY game ORDER BY c DESC",
+            "SELECT game, COUNT(*) as c FROM reviews GROUP BY game ORDER BY COUNT(*) DESC",
+            "SELECT game, COUNT(*) FROM reviews GROUP BY game ORDER BY 2 DESC",
+            # No GROUP BY
+            "SELECT game, rating FROM reviews ORDER BY rating DESC",
+            # No ORDER BY
+            "SELECT app_version, AVG(rating) FROM reviews GROUP BY app_version",
+        ],
+    )
+    def test_ignores_non_flagged_queries_including_count(self, sql: str) -> None:
+        from reviewlens.sql.validator import is_small_sample_ranking
+
+        assert is_small_sample_ranking(sql) is False

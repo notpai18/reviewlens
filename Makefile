@@ -82,13 +82,15 @@ eval: eval-retrieval eval-sql eval-e2e
 eval-retrieval:
 	$(RUN_CLEAN) python scripts/run_eval.py --suite retrieval
 
+RUNS ?= 1
+
 .PHONY: eval-sql
 eval-sql:
-	$(RUN_CLEAN) python scripts/run_eval.py --suite sql --runs 1
+	$(RUN_CLEAN) python scripts/run_eval.py --suite sql --runs $(RUNS)
 
 .PHONY: eval-e2e
 eval-e2e:
-	$(RUN_CLEAN) python scripts/run_eval.py --suite e2e --runs 1
+	$(RUN_CLEAN) python scripts/run_eval.py --suite e2e --runs $(RUNS)
 
 # Development server
 .PHONY: serve

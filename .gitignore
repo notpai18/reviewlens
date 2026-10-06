@@ -91,3 +91,5 @@ models/
 # Backup files
 *.bak
 *.backup
+.qdrant-initialized
+

@@ -1,0 +1,45 @@
+{
+  "question_key": "lowest_version",
+  "question": "What is the lowest rated version?",
+  "mode": "after",
+  "final_sql": "SELECT game, app_version, ROUND(AVG(rating), 2) AS avg_rating, COUNT(*) AS review_count FROM reviews WHERE NOT app_version IS NULL GROUP BY game, app_version HAVING COUNT(*) >= 30 ORDER BY avg_rating ASC LIMIT 1",
+  "sql_columns": [
+    "game",
+    "app_version",
+    "avg_rating",
+    "review_count"
+  ],
+  "sql_rows": [
+    [
+      "Marvel Snap",
+      "41.11.1",
+      1.31,
+      609
+    ]
+  ],
+  "sql_attempts": [
+    {
+      "attempt": 1,
+      "status": "success",
+      "sql": "SELECT game, app_version, ROUND(AVG(rating), 2) AS avg_rating, COUNT(*) AS review_count FROM reviews WHERE NOT app_version IS NULL GROUP BY game, app_version HAVING COUNT(*) >= 30 ORDER BY avg_rating ASC LIMIT 1",
+      "error": null
+    }
+  ],
+  "final_answer": {
+    "summary": "The lowest rated version across all games is version 41.11.1 of Marvel Snap with an average rating of 1.31 based on 609 reviews. No other details are available from the database regarding other versions.",
+    "findings": [
+      {
+        "statement": "Version 41.11.1 of Marvel Snap is the lowest rated version with an average rating of 1.31 and 609 reviews.",
+        "evidence_ids": [
+          "SQL#1"
+        ],
+        "kind": "observed"
+      }
+    ],
+    "caveats": [],
+    "followups": [
+      "What are the specific review counts for other versions of Marvel Snap?",
+      "What are the highest rated versions across all games?"
+    ]
+  }
+}

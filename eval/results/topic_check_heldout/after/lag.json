@@ -1,0 +1,158 @@
+{
+  "request_id": "d1576716-8583-4405-92c7-c9d09524e612",
+  "answer_markdown": "Players of Marvel Snap state that the game suffers from significant lag, poor performance, and slow response times even on low settings. Reviewers note that performance has degraded over time, causing crashes, long load times, and device heating.\n\n**Findings**\n- *Players say:* Several retrieved reviews for Marvel Snap mention that the game lags a lot or too much, even when using the lowest settings. [REV:466cff51-a6b2-4a4d-98e4-f3633f672a6b] [REV:f865ee01-f49b-4730-b2a8-529469fed9da] [REV:3ad48076-fd6b-448e-8632-bbb488af0013] [REV:81ea3030-f55f-4e25-a0bb-0296bc056678]\n- *Players say:* Retrieved reviews for Marvel Snap state that performance issues lead to crashes and that the app takes a long time to load. [REV:16f2a543-4a94-47c7-baa8-c180901486bd] [REV:ee5549f7-9fa0-49a0-b99d-f09724c2a19f]\n- *Players say:* A Marvel Snap reviewer mentions that performance has severely degraded over time, with menu items taking multiple seconds to respond. [REV:13188932-9318-4e41-b663-a78ed8744011]\n- *Players say:* Marvel Snap players report that the game drains battery, causes smartphones to heat up, and has slow response times to queries. [REV:466cff51-a6b2-4a4d-98e4-f3633f672a6b] [REV:81ea3030-f55f-4e25-a0bb-0296bc056678] [REV:2e3f5bb4-0296-4da6-b664-9c0276b9a30f]\n\n**Caveats**\n- Findings are based on 8 distinct reviews.\n- Cited reviews cover: Marvel Snap (8).\n- Rating distribution of cited reviews: 1\u2605: 3, 2\u2605: 2, 3\u2605: 1, 4\u2605: 1, 5\u2605: 1.\n\n**You could also ask**\n- What specific versions of Marvel Snap are most affected by the lag?\n- Are there specific device models mentioned alongside the performance issues in Marvel Snap?\n- When did Marvel Snap's performance begin degrading according to a wider sample of players?",
+  "answer": {
+    "summary": "Players of Marvel Snap state that the game suffers from significant lag, poor performance, and slow response times even on low settings. Reviewers note that performance has degraded over time, causing crashes, long load times, and device heating.",
+    "findings": [
+      {
+        "statement": "Several retrieved reviews for Marvel Snap mention that the game lags a lot or too much, even when using the lowest settings.",
+        "evidence_ids": [
+          "REV:466cff51-a6b2-4a4d-98e4-f3633f672a6b",
+          "REV:f865ee01-f49b-4730-b2a8-529469fed9da",
+          "REV:3ad48076-fd6b-448e-8632-bbb488af0013",
+          "REV:81ea3030-f55f-4e25-a0bb-0296bc056678"
+        ],
+        "kind": "player_feedback"
+      },
+      {
+        "statement": "Retrieved reviews for Marvel Snap state that performance issues lead to crashes and that the app takes a long time to load.",
+        "evidence_ids": [
+          "REV:16f2a543-4a94-47c7-baa8-c180901486bd",
+          "REV:ee5549f7-9fa0-49a0-b99d-f09724c2a19f"
+        ],
+        "kind": "player_feedback"
+      },
+      {
+        "statement": "A Marvel Snap reviewer mentions that performance has severely degraded over time, with menu items taking multiple seconds to respond.",
+        "evidence_ids": [
+          "REV:13188932-9318-4e41-b663-a78ed8744011"
+        ],
+        "kind": "player_feedback"
+      },
+      {
+        "statement": "Marvel Snap players report that the game drains battery, causes smartphones to heat up, and has slow response times to queries.",
+        "evidence_ids": [
+          "REV:466cff51-a6b2-4a4d-98e4-f3633f672a6b",
+          "REV:81ea3030-f55f-4e25-a0bb-0296bc056678",
+          "REV:2e3f5bb4-0296-4da6-b664-9c0276b9a30f"
+        ],
+        "kind": "player_feedback"
+      }
+    ],
+    "caveats": [
+      "Findings are based on 8 distinct reviews.",
+      "Cited reviews cover: Marvel Snap (8).",
+      "Rating distribution of cited reviews: 1\u2605: 3, 2\u2605: 2, 3\u2605: 1, 4\u2605: 1, 5\u2605: 1."
+    ],
+    "followups": [
+      "What specific versions of Marvel Snap are most affected by the lag?",
+      "Are there specific device models mentioned alongside the performance issues in Marvel Snap?",
+      "When did Marvel Snap's performance begin degrading according to a wider sample of players?"
+    ]
+  },
+  "citations": [
+    {
+      "id": "REV:466cff51-a6b2-4a4d-98e4-f3633f672a6b",
+      "type": "review",
+      "label": null,
+      "snippet": "Please improve the game frame rate. It's drops even after reducing everything to improve performance on my device and in-game settings too. It lags a lot. smartphone heats up too.",
+      "game": "Marvel Snap",
+      "date": "2025-05-17",
+      "rating": 4
+    },
+    {
+      "id": "REV:f865ee01-f49b-4730-b2a8-529469fed9da",
+      "type": "review",
+      "label": null,
+      "snippet": "lag's tooo much even with the lowest settings",
+      "game": "Marvel Snap",
+      "date": "2026-05-17",
+      "rating": 1
+    },
+    {
+      "id": "REV:3ad48076-fd6b-448e-8632-bbb488af0013",
+      "type": "review",
+      "label": null,
+      "snippet": "The game is not optimised properly. It is lagging too much.",
+      "game": "Marvel Snap",
+      "date": "2026-05-26",
+      "rating": 2
+    },
+    {
+      "id": "REV:81ea3030-f55f-4e25-a0bb-0296bc056678",
+      "type": "review",
+      "label": null,
+      "snippet": "lag a lot please optimise it it lag more than call of duty on this device also drain a lot of battery",
+      "game": "Marvel Snap",
+      "date": "2025-03-05",
+      "rating": 5
+    },
+    {
+      "id": "REV:16f2a543-4a94-47c7-baa8-c180901486bd",
+      "type": "review",
+      "label": null,
+      "snippet": "Very high quality production, and a lot of effort was obviously put into the game. The collectable aspects are addictive. However, the prevalence of 'spoiler' abilities for cards and locations makes t",
+      "game": "Marvel Snap",
+      "date": "2025-07-11",
+      "rating": 1
+    },
+    {
+      "id": "REV:ee5549f7-9fa0-49a0-b99d-f09724c2a19f",
+      "type": "review",
+      "label": null,
+      "snippet": "Most fun mobile card game, worst performing app ever. I never wanted to make this review, but the game has steadily performed worse and worse every patch, and it's finally gotten so bad that it is unp",
+      "game": "Marvel Snap",
+      "date": "2025-07-01",
+      "rating": 1
+    },
+    {
+      "id": "REV:13188932-9318-4e41-b663-a78ed8744011",
+      "type": "review",
+      "label": null,
+      "snippet": "I can't recommend this game to newcomers. Over time it's performance has severely degraded and takes longer and longer to load the app. The menu items aren't quick to respond as they take multiple sec",
+      "game": "Marvel Snap",
+      "date": "2025-11-21",
+      "rating": 2
+    },
+    {
+      "id": "REV:2e3f5bb4-0296-4da6-b664-9c0276b9a30f",
+      "type": "review",
+      "label": null,
+      "snippet": "slow response to query, bugs and gaming issues.",
+      "game": "Marvel Snap",
+      "date": "2025-08-22",
+      "rating": 3
+    }
+  ],
+  "sql": [],
+  "retrieved": [],
+  "trace": [
+    {
+      "node": "plan",
+      "duration_ms": 2182,
+      "summary": "intent=analytics, tools=['docs']"
+    },
+    {
+      "node": "docs_tool",
+      "duration_ms": 14,
+      "summary": "Retrieved 8 documents (query='lag performance')."
+    },
+    {
+      "node": "synthesize",
+      "duration_ms": 5135,
+      "summary": "Synthesized answer."
+    },
+    {
+      "node": "verify",
+      "duration_ms": 0,
+      "summary": "Verified findings: 4 kept, 0 dropped."
+    }
+  ],
+  "usage": {
+    "llm_calls": 2,
+    "prompt_tokens": 2490,
+    "completion_tokens": 916,
+    "latency_ms": 7317
+  },
+  "cached": false
+}

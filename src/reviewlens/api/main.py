@@ -21,16 +21,15 @@ from reviewlens.agent.evidence import render_answer_markdown
 from reviewlens.agent.factory import LLMUnavailableError
 from reviewlens.agent.graph import run_question
 from reviewlens.agent.nodes import AgentContext
+from reviewlens.api.citations import split_evidence
 from reviewlens.api.deps import get_agent_ctx, get_settings_dep, init_deps
 from reviewlens.api.rate_limit import check_rate_limit
 from reviewlens.api.schemas import (
     AskRequest,
     AskResponse,
-    CitationSchema,
     ErrorResponse,
     IngestRequest,
     IngestStatusResponse,
-    RetrievedInfo,
     SQLInfo,
 )
 from reviewlens.config import Settings
@@ -186,9 +185,7 @@ async def ask(
         ans = result.get("final_answer")
         ans_markdown = render_answer_markdown(ans) if ans else "Processing failed."
 
-        citations: list[CitationSchema] = []
         sql_infos: list[SQLInfo] = []
-        retrieved_infos: list[RetrievedInfo] = []
 
         sql_res = result.get("sql_result")
         if sql_res and sql_res.result:
@@ -203,23 +200,9 @@ async def ask(
                     rows_preview=preview,
                 )
             )
-            citations.append(CitationSchema(id="SQL#1", type="sql", label="SQL Query"))
 
         docs = result.get("docs_result") or []
-        for d in docs:
-            retrieved_infos.append(
-                RetrievedInfo(review_id=d.review_id, score=d.score, snippet=d.text[:200])
-            )
-            citations.append(
-                CitationSchema(
-                    id=f"REV:{d.review_id}",
-                    type="review",
-                    snippet=d.text[:200],
-                    game=d.game,
-                    date=d.review_date.isoformat(),
-                    rating=d.rating,
-                )
-            )
+        citations, retrieved_infos = split_evidence(ans, sql_res, docs)
 
         resp = AskResponse(
             request_id=req_id,

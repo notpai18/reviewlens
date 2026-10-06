@@ -1,0 +1,151 @@
+{
+  "request_id": "d58b3c90-4fb2-4c8d-9660-6522de57cbcc",
+  "answer_markdown": "Players of Cookie Run: Kingdom report being unable to log in, waiting long periods, or experiencing the app exiting upon login. Meanwhile, Marvel Snap players report getting stuck at 85% loading, experiencing login errors during network issues, or failing to log in after updates.\n\n**Findings**\n- *Players say:* In Cookie Run: Kingdom, a player reports being unable to log in even after waiting 30 minutes. [REV:4dabc4cf-6c30-4fc4-bd9c-645cf2f2a76a]\n- *Players say:* In Cookie Run: Kingdom, a player states that the game always exits when attempting to log in. [REV:b590b40e-533e-4aa9-869f-5687cb2cdb03]\n- *Players say:* In Marvel Snap, a player notes getting stuck at 85 percent and needing to change the device language setting to English to login. [REV:e7c693a3-069f-4bce-8c7c-096c14aa0ee8]\n- *Players say:* In Marvel Snap, players report login errors occurring after updates or when experiencing network issues. [REV:40b9fe3a-beb8-4aa8-8c16-03f0aa098963] [REV:5b06b94b-6374-49f0-bce9-3566fabc4a4f]\n\n**Caveats**\n- Findings are based on 5 distinct reviews.\n- Cited reviews cover: Cookie Run: Kingdom (2), Marvel Snap (3).\n- Rating distribution of cited reviews: 1\u2605: 2, 2\u2605: 1, 3\u2605: 1, 4\u2605: 0, 5\u2605: 1.\n\n**You could also ask**\n- What specific troubleshooting steps do Marvel Snap players use for login errors?\n- How long have Cookie Run: Kingdom players experienced login exits?\n- Are specific versions of Marvel Snap linked to the 85 percent loading issue?",
+  "answer": {
+    "summary": "Players of Cookie Run: Kingdom report being unable to log in, waiting long periods, or experiencing the app exiting upon login. Meanwhile, Marvel Snap players report getting stuck at 85% loading, experiencing login errors during network issues, or failing to log in after updates.",
+    "findings": [
+      {
+        "statement": "In Cookie Run: Kingdom, a player reports being unable to log in even after waiting 30 minutes.",
+        "evidence_ids": [
+          "REV:4dabc4cf-6c30-4fc4-bd9c-645cf2f2a76a"
+        ],
+        "kind": "player_feedback"
+      },
+      {
+        "statement": "In Cookie Run: Kingdom, a player states that the game always exits when attempting to log in.",
+        "evidence_ids": [
+          "REV:b590b40e-533e-4aa9-869f-5687cb2cdb03"
+        ],
+        "kind": "player_feedback"
+      },
+      {
+        "statement": "In Marvel Snap, a player notes getting stuck at 85 percent and needing to change the device language setting to English to login.",
+        "evidence_ids": [
+          "REV:e7c693a3-069f-4bce-8c7c-096c14aa0ee8"
+        ],
+        "kind": "player_feedback"
+      },
+      {
+        "statement": "In Marvel Snap, players report login errors occurring after updates or when experiencing network issues.",
+        "evidence_ids": [
+          "REV:40b9fe3a-beb8-4aa8-8c16-03f0aa098963",
+          "REV:5b06b94b-6374-49f0-bce9-3566fabc4a4f"
+        ],
+        "kind": "player_feedback"
+      }
+    ],
+    "caveats": [
+      "Findings are based on 5 distinct reviews.",
+      "Cited reviews cover: Cookie Run: Kingdom (2), Marvel Snap (3).",
+      "Rating distribution of cited reviews: 1\u2605: 2, 2\u2605: 1, 3\u2605: 1, 4\u2605: 0, 5\u2605: 1."
+    ],
+    "followups": [
+      "What specific troubleshooting steps do Marvel Snap players use for login errors?",
+      "How long have Cookie Run: Kingdom players experienced login exits?",
+      "Are specific versions of Marvel Snap linked to the 85 percent loading issue?"
+    ]
+  },
+  "citations": [
+    {
+      "id": "REV:4dabc4cf-6c30-4fc4-bd9c-645cf2f2a76a",
+      "type": "review",
+      "label": null,
+      "snippet": "why i cannot login to the game i alr waited 30 minute still i cant login fix it",
+      "game": "Cookie Run: Kingdom",
+      "date": "2026-05-27",
+      "rating": 2
+    },
+    {
+      "id": "REV:b590b40e-533e-4aa9-869f-5687cb2cdb03",
+      "type": "review",
+      "label": null,
+      "snippet": "When i want to login the game is always exit",
+      "game": "Cookie Run: Kingdom",
+      "date": "2026-07-17",
+      "rating": 5
+    },
+    {
+      "id": "REV:e7c693a3-069f-4bce-8c7c-096c14aa0ee8",
+      "type": "review",
+      "label": null,
+      "snippet": "Stuck di 85 % gak bisa loading/login. Mesti ganti dulu setelan ke bahasa inggris.",
+      "game": "Marvel Snap",
+      "date": "2026-04-27",
+      "rating": 3
+    },
+    {
+      "id": "REV:40b9fe3a-beb8-4aa8-8c16-03f0aa098963",
+      "type": "review",
+      "label": null,
+      "snippet": "I've had to reinstall the game 3 time in a week , cause there's a login error I keep getting when there's even the slightest network issue when trying to login.",
+      "game": "Marvel Snap",
+      "date": "2026-08-10",
+      "rating": 1
+    },
+    {
+      "id": "REV:5b06b94b-6374-49f0-bce9-3566fabc4a4f",
+      "type": "review",
+      "label": null,
+      "snippet": "I cannot log in after the latest update",
+      "game": "Marvel Snap",
+      "date": "2025-06-11",
+      "rating": 1
+    }
+  ],
+  "sql": [],
+  "retrieved": [
+    {
+      "review_id": "55aa0315-6cc8-45fa-8987-69b060396aec",
+      "rank_score": 0.33333334,
+      "snippet": "LOGIN ERROR Hit almost 1300 collection and have spent +$90 and just today having login issues",
+      "game": "Marvel Snap",
+      "date": "2025-03-05",
+      "rating": 5
+    },
+    {
+      "review_id": "885cf282-69a1-45af-80ee-72b7e2d777e3",
+      "rank_score": 0.33333334,
+      "snippet": "This is a great app! it's so fun trying to get cookies, the codes make it easier:)",
+      "game": "Cookie Run: Kingdom",
+      "date": "2026-06-21",
+      "rating": 5
+    },
+    {
+      "review_id": "70fa6a02-b62b-475d-b26e-5fe1aea3e6fc",
+      "rank_score": 0.2,
+      "snippet": "F2P are nerfed. Hard. As a F2P, you're fodder for the paying players and whales. I got tired of logging in to lose. Like every game, every login, several logins a day, different decks, different days.",
+      "game": "Marvel Snap",
+      "date": "2025-01-09",
+      "rating": 1
+    }
+  ],
+  "trace": [
+    {
+      "node": "plan",
+      "duration_ms": 3787,
+      "summary": "intent=analytics, tools=['docs']"
+    },
+    {
+      "node": "docs_tool",
+      "duration_ms": 12,
+      "summary": "Retrieved 8 documents (query='login')."
+    },
+    {
+      "node": "synthesize",
+      "duration_ms": 3363,
+      "summary": "Synthesized answer."
+    },
+    {
+      "node": "verify",
+      "duration_ms": 0,
+      "summary": "Verified findings: 4 kept, 0 dropped."
+    }
+  ],
+  "usage": {
+    "llm_calls": 2,
+    "prompt_tokens": 2370,
+    "completion_tokens": 721,
+    "latency_ms": 7150
+  },
+  "cached": false
+}

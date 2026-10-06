@@ -1,0 +1,207 @@
+{
+  "request_id": "83594dc4-a1b1-4159-924d-f2d399b11ec7",
+  "answer_markdown": "Players express significant dissatisfaction with the matchmaking in Marvel Snap. Reviewers frequently complain that the matchmaking system is rigged, unfair, or results in excessively long waiting times.\n\n**Findings**\n- *Players say:* In Marvel Snap, several retrieved reviews mention that the matchmaking system feels rigged or unfair, matching players against opponents with more advantageous decks or higher levels. [REV:69ff0b34-8d24-4474-84a3-00547c034476] [REV:47060e42-79e2-4718-8b31-82708962f17c] [REV:43a375aa-a651-4d35-a4f6-8dea6345bf29] [REV:cdfe82be-cf41-48f0-bdb4-44ba964f1e8a] [REV:a64312a4-3b2c-4ae2-b047-1dae94893176]\n- *Players say:* Players of Marvel Snap report experiencing very long waiting times for matchmaking in modes such as Conquest, Normal, and Sanctum showdown. [REV:e67a478e-4081-4ed5-9240-24c688c12a11] [REV:912a7974-f0c4-4d7d-90fe-80e53e409257]\n\n**Caveats**\n- Findings are based on 7 distinct reviews.\n- Cited reviews cover: Marvel Snap (7).\n- Rating distribution of cited reviews: 1\u2605: 6, 2\u2605: 1, 3\u2605: 0, 4\u2605: 0, 5\u2605: 0.\n\n**You could also ask**\n- What specific changes are players asking for regarding Marvel Snap's matchmaking?\n- Which game modes are most frequently associated with long matchmaking wait times in Marvel Snap?",
+  "answer": {
+    "summary": "Players express significant dissatisfaction with the matchmaking in Marvel Snap. Reviewers frequently complain that the matchmaking system is rigged, unfair, or results in excessively long waiting times.",
+    "findings": [
+      {
+        "statement": "In Marvel Snap, several retrieved reviews mention that the matchmaking system feels rigged or unfair, matching players against opponents with more advantageous decks or higher levels.",
+        "evidence_ids": [
+          "REV:69ff0b34-8d24-4474-84a3-00547c034476",
+          "REV:47060e42-79e2-4718-8b31-82708962f17c",
+          "REV:43a375aa-a651-4d35-a4f6-8dea6345bf29",
+          "REV:cdfe82be-cf41-48f0-bdb4-44ba964f1e8a",
+          "REV:a64312a4-3b2c-4ae2-b047-1dae94893176"
+        ],
+        "kind": "player_feedback"
+      },
+      {
+        "statement": "Players of Marvel Snap report experiencing very long waiting times for matchmaking in modes such as Conquest, Normal, and Sanctum showdown.",
+        "evidence_ids": [
+          "REV:e67a478e-4081-4ed5-9240-24c688c12a11",
+          "REV:912a7974-f0c4-4d7d-90fe-80e53e409257"
+        ],
+        "kind": "player_feedback"
+      }
+    ],
+    "caveats": [
+      "Findings are based on 7 distinct reviews.",
+      "Cited reviews cover: Marvel Snap (7).",
+      "Rating distribution of cited reviews: 1\u2605: 6, 2\u2605: 1, 3\u2605: 0, 4\u2605: 0, 5\u2605: 0."
+    ],
+    "followups": [
+      "What specific changes are players asking for regarding Marvel Snap's matchmaking?",
+      "Which game modes are most frequently associated with long matchmaking wait times in Marvel Snap?"
+    ]
+  },
+  "citations": [
+    {
+      "id": "REV:69ff0b34-8d24-4474-84a3-00547c034476",
+      "type": "review",
+      "label": null,
+      "snippet": "The game is fun but the matchmaking is rigged",
+      "game": "Marvel Snap",
+      "date": "2026-07-25",
+      "rating": 2
+    },
+    {
+      "id": "REV:47060e42-79e2-4718-8b31-82708962f17c",
+      "type": "review",
+      "label": null,
+      "snippet": "No this game matchmaking are worst, they keep matching your deck versus an enemy with more advantageous deck no matter how many times you've change your deck. Even though your deck and opening cards i",
+      "game": "Marvel Snap",
+      "date": "2026-01-04",
+      "rating": 1
+    },
+    {
+      "id": "REV:43a375aa-a651-4d35-a4f6-8dea6345bf29",
+      "type": "review",
+      "label": null,
+      "snippet": "Absolutely horrid matchmaking. I am consistently put up against opponents TEN TIMES my level and it's so frustrating because it's an insta loss no matter what. Geuiniely such an unfair match making sy",
+      "game": "Marvel Snap",
+      "date": "2025-05-05",
+      "rating": 1
+    },
+    {
+      "id": "REV:cdfe82be-cf41-48f0-bdb4-44ba964f1e8a",
+      "type": "review",
+      "label": null,
+      "snippet": "review update: Seriously they purposely match with unfair opponents that suited to win over your cards. 10 times in a row, same galactus, alohith cards. -ve review: Arishem deck 5 times in a row serio",
+      "game": "Marvel Snap",
+      "date": "2024-12-27",
+      "rating": 1
+    },
+    {
+      "id": "REV:a64312a4-3b2c-4ae2-b047-1dae94893176",
+      "type": "review",
+      "label": null,
+      "snippet": "Greedy app garbage dont be fooled. Matchmaking is rigged.",
+      "game": "Marvel Snap",
+      "date": "2026-02-03",
+      "rating": 1
+    },
+    {
+      "id": "REV:e67a478e-4081-4ed5-9240-24c688c12a11",
+      "type": "review",
+      "label": null,
+      "snippet": "This game is super fun, but I am completely fed up with the matchmaking times on the Conquest mode. At BEST you wait several *minutes* before matching, at worst? Still don't have anyone to play with a",
+      "game": "Marvel Snap",
+      "date": "2025-01-07",
+      "rating": 1
+    },
+    {
+      "id": "REV:912a7974-f0c4-4d7d-90fe-80e53e409257",
+      "type": "review",
+      "label": null,
+      "snippet": "why is matchmaking loading so long to play other players??? is the game down??? Normal matchmaking is taking long same for Conquest and Sanctum showdown??! where everyone??",
+      "game": "Marvel Snap",
+      "date": "2025-10-21",
+      "rating": 1
+    },
+    {
+      "id": "REV:d70f4b1e-c5f3-4477-abb6-7f071981e8a8",
+      "type": "review",
+      "label": null,
+      "snippet": "Tired of playing against people that have the same cards as me. It's literally every other match. (2025*) STILL DOGWATER MATCHMAKING",
+      "game": "Marvel Snap",
+      "date": "2025-04-27",
+      "rating": 1
+    }
+  ],
+  "sql": [],
+  "retrieved": [
+    {
+      "review_id": "69ff0b34-8d24-4474-84a3-00547c034476",
+      "rank_score": 0.6,
+      "snippet": "The game is fun but the matchmaking is rigged",
+      "game": "Marvel Snap",
+      "date": "2026-07-25",
+      "rating": 2
+    },
+    {
+      "review_id": "47060e42-79e2-4718-8b31-82708962f17c",
+      "rank_score": 0.5,
+      "snippet": "No this game matchmaking are worst, they keep matching your deck versus an enemy with more advantageous deck no matter how many times you've change your deck. Even though your deck and opening cards i",
+      "game": "Marvel Snap",
+      "date": "2026-01-04",
+      "rating": 1
+    },
+    {
+      "review_id": "43a375aa-a651-4d35-a4f6-8dea6345bf29",
+      "rank_score": 0.33333334,
+      "snippet": "Absolutely horrid matchmaking. I am consistently put up against opponents TEN TIMES my level and it's so frustrating because it's an insta loss no matter what. Geuiniely such an unfair match making sy",
+      "game": "Marvel Snap",
+      "date": "2025-05-05",
+      "rating": 1
+    },
+    {
+      "review_id": "cdfe82be-cf41-48f0-bdb4-44ba964f1e8a",
+      "rank_score": 0.33333334,
+      "snippet": "review update: Seriously they purposely match with unfair opponents that suited to win over your cards. 10 times in a row, same galactus, alohith cards. -ve review: Arishem deck 5 times in a row serio",
+      "game": "Marvel Snap",
+      "date": "2024-12-27",
+      "rating": 1
+    },
+    {
+      "review_id": "a64312a4-3b2c-4ae2-b047-1dae94893176",
+      "rank_score": 0.32692307,
+      "snippet": "Greedy app garbage dont be fooled. Matchmaking is rigged.",
+      "game": "Marvel Snap",
+      "date": "2026-02-03",
+      "rating": 1
+    },
+    {
+      "review_id": "e67a478e-4081-4ed5-9240-24c688c12a11",
+      "rank_score": 0.2909091,
+      "snippet": "This game is super fun, but I am completely fed up with the matchmaking times on the Conquest mode. At BEST you wait several *minutes* before matching, at worst? Still don't have anyone to play with a",
+      "game": "Marvel Snap",
+      "date": "2025-01-07",
+      "rating": 1
+    },
+    {
+      "review_id": "912a7974-f0c4-4d7d-90fe-80e53e409257",
+      "rank_score": 0.29,
+      "snippet": "why is matchmaking loading so long to play other players??? is the game down??? Normal matchmaking is taking long same for Conquest and Sanctum showdown??! where everyone??",
+      "game": "Marvel Snap",
+      "date": "2025-10-21",
+      "rating": 1
+    },
+    {
+      "review_id": "d70f4b1e-c5f3-4477-abb6-7f071981e8a8",
+      "rank_score": 0.21428572,
+      "snippet": "Tired of playing against people that have the same cards as me. It's literally every other match. (2025*) STILL DOGWATER MATCHMAKING",
+      "game": "Marvel Snap",
+      "date": "2025-04-27",
+      "rating": 1
+    }
+  ],
+  "trace": [
+    {
+      "node": "plan",
+      "duration_ms": 2024,
+      "summary": "intent=analytics, tools=['docs']"
+    },
+    {
+      "node": "docs_tool",
+      "duration_ms": 18,
+      "summary": "Retrieved 8 documents (query='matchmaking')."
+    },
+    {
+      "node": "synthesize",
+      "duration_ms": 3622,
+      "summary": "Synthesized answer."
+    },
+    {
+      "node": "verify",
+      "duration_ms": 0,
+      "summary": "Verified findings: 2 kept, 0 dropped."
+    }
+  ],
+  "usage": {
+    "llm_calls": 2,
+    "prompt_tokens": 2567,
+    "completion_tokens": 655,
+    "latency_ms": 5646
+  },
+  "cached": false
+}

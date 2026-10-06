@@ -264,7 +264,7 @@ async def test_agent_sequential_hybrid_builds_docs_query_from_sql(base_meta, tmp
         "filters": {"game": "Brawl Stars"},
     }
     sql_gen = {
-        "sql": "SELECT app_version, AVG(rating) AS r FROM reviews GROUP BY 1 ORDER BY r ASC LIMIT 1",
+        "sql": "SELECT app_version, AVG(rating) AS r FROM reviews GROUP BY 1 HAVING COUNT(*) >= 1 ORDER BY r ASC LIMIT 1",
         "assumptions": [],
     }
     docs_builder = {

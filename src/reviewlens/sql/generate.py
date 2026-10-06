@@ -17,7 +17,7 @@ from pydantic import BaseModel
 
 from reviewlens.models import SQLResult, Usage, ValidationResult
 from reviewlens.prompts.renderer import load_and_render
-from reviewlens.sql.validator import validate_sql
+from reviewlens.sql.validator import is_small_sample_ranking, validate_sql
 from reviewlens.warehouse.catalog import (
     fewshots_text,
     load_fewshots_yaml,
@@ -216,6 +216,25 @@ class SQLGenerator:
                     )
                 )
                 feedback = f"Validation error: {reason_str}"
+                continue
+
+            # Guard: small-sample ranking with GROUP BY and ORDER BY avg/ratio without HAVING
+            if is_small_sample_ranking(normalized) and attempt_num < self._max_attempts:
+                guard_msg = (
+                    "Small-sample ranking guard: Query has GROUP BY and ORDER BY on an "
+                    "average or ratio without a HAVING clause. Add HAVING COUNT(*) >= 30 "
+                    "(or appropriate minimum sample size) to prevent small-sample bias."
+                )
+                attempts.append(
+                    SQLAttempt(
+                        attempt_num=attempt_num,
+                        sql=current_sql,
+                        status="small_sample_guard",
+                        validation_reasons=[guard_msg],
+                        error=guard_msg,
+                    )
+                )
+                feedback = guard_msg
                 continue
 
             # Execute (only normalized SQL)

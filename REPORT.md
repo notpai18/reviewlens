@@ -1,6 +1,6 @@
 # ReviewLens Evaluation Report
 
-**Date**: 2026-10-05  
+**Date**: 2026-10-06  
 **Model**: `gemini-2.5-flash-lite`  
 **Dataset**: 15,713 cleaned Google Play reviews across 2 games  
 
@@ -10,7 +10,7 @@
 
 - **Retrieval Performance**: Hybrid RRF achieved **Hit@5 of 0.3667** and significantly outperformed dense retrieval (+0.3333 Hit@5, 95% CI [0.2167, 0.45]), while BM25 dominated exact keyword retrieval with **Hit@5 of 0.4167**.
 - **SQL Execution & Self-Repair**: The DuckDB Text-to-SQL generator achieved a **91.7% AST validator pass rate** and **91.7% first-attempt success rate**, successfully generating safe queries within limits.
-- **Safety & Citation Verification**: The LangGraph agent achieved **100.0% adversarial safety** (prompt injection & destructive SQL refusals without secret leakage) and **100.0% citation verification rate** with zero fabricated evidence IDs surviving post-verification.
+- **Safety & Citation Verification**: The LangGraph agent achieved **100.0% adversarial safety** (prompt injection & destructive SQL refusals without secret leakage) and **40.0% citation verification rate** with zero fabricated evidence IDs surviving post-verification.
 
 ---
 

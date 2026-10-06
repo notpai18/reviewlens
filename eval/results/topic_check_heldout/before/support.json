@@ -1,0 +1,220 @@
+{
+  "request_id": "e51122d2-ec98-426d-ae9d-e76e7854a6cb",
+  "answer_markdown": "Players of Cookie Run: Kingdom express concern regarding the use of AI art instead of supporting real artists. For Marvel Snap, reviewers report major issues with customer support failing to respond to account and purchase problems, being unhelpful with glitches, and having a mobile support page that is difficult to use.\n\n**Findings**\n- *Players say:* For Cookie Run: Kingdom, a reviewer states that the developers are using AI art instead of supporting real artists. [REV:70e43b09-94c6-4e8a-a539-9e8eb4f952e3]\n- *Players say:* For Marvel Snap, several retrieved reviews mention that support is unhelpful, non-existent, or fails to get back to players regarding card purchases, missing cards, and glitches. [REV:5e2071cf-ecb8-4fbe-9218-12c1f4eec4f4] [REV:675c6a3e-5939-4b94-b35a-a94bddb47247] [REV:f35a2afd-7ca7-4683-8213-b30163626c37] [REV:96f0199e-02f5-4f5e-a58e-01ba94fecdaf]\n- *Players say:* For Marvel Snap, a reviewer states that there is no support for the regular player base who keep the game going. [REV:0d896ffd-b263-4574-94f8-9181da155064]\n- *Players say:* For Marvel Snap, a reviewer reports that the support page is not optimized for mobile devices and has keyboard usability issues. [REV:0540572e-b20e-4e83-b912-4e500e783a6a]\n\n**Caveats**\n- Findings are based on 7 distinct reviews.\n- Cited reviews cover: Cookie Run: Kingdom (1), Marvel Snap (6).\n- Rating distribution of cited reviews: 1\u2605: 6, 2\u2605: 0, 3\u2605: 0, 4\u2605: 0, 5\u2605: 1.\n\n**You could also ask**\n- What specific glitches are Marvel Snap support failing to address?\n- How often do Marvel Snap players experience lost card recovery issues?\n- Are there alternative official channels for Cookie Run: Kingdom support?",
+  "answer": {
+    "summary": "Players of Cookie Run: Kingdom express concern regarding the use of AI art instead of supporting real artists. For Marvel Snap, reviewers report major issues with customer support failing to respond to account and purchase problems, being unhelpful with glitches, and having a mobile support page that is difficult to use.",
+    "findings": [
+      {
+        "statement": "For Cookie Run: Kingdom, a reviewer states that the developers are using AI art instead of supporting real artists.",
+        "evidence_ids": [
+          "REV:70e43b09-94c6-4e8a-a539-9e8eb4f952e3"
+        ],
+        "kind": "player_feedback"
+      },
+      {
+        "statement": "For Marvel Snap, several retrieved reviews mention that support is unhelpful, non-existent, or fails to get back to players regarding card purchases, missing cards, and glitches.",
+        "evidence_ids": [
+          "REV:5e2071cf-ecb8-4fbe-9218-12c1f4eec4f4",
+          "REV:675c6a3e-5939-4b94-b35a-a94bddb47247",
+          "REV:f35a2afd-7ca7-4683-8213-b30163626c37",
+          "REV:96f0199e-02f5-4f5e-a58e-01ba94fecdaf"
+        ],
+        "kind": "player_feedback"
+      },
+      {
+        "statement": "For Marvel Snap, a reviewer states that there is no support for the regular player base who keep the game going.",
+        "evidence_ids": [
+          "REV:0d896ffd-b263-4574-94f8-9181da155064"
+        ],
+        "kind": "player_feedback"
+      },
+      {
+        "statement": "For Marvel Snap, a reviewer reports that the support page is not optimized for mobile devices and has keyboard usability issues.",
+        "evidence_ids": [
+          "REV:0540572e-b20e-4e83-b912-4e500e783a6a"
+        ],
+        "kind": "player_feedback"
+      }
+    ],
+    "caveats": [
+      "Findings are based on 7 distinct reviews.",
+      "Cited reviews cover: Cookie Run: Kingdom (1), Marvel Snap (6).",
+      "Rating distribution of cited reviews: 1\u2605: 6, 2\u2605: 0, 3\u2605: 0, 4\u2605: 0, 5\u2605: 1."
+    ],
+    "followups": [
+      "What specific glitches are Marvel Snap support failing to address?",
+      "How often do Marvel Snap players experience lost card recovery issues?",
+      "Are there alternative official channels for Cookie Run: Kingdom support?"
+    ]
+  },
+  "citations": [
+    {
+      "id": "REV:70e43b09-94c6-4e8a-a539-9e8eb4f952e3",
+      "type": "review",
+      "label": null,
+      "snippet": "Don't support, they're using AI art instead of supporting real artists. As a vet player and an artist myself, this is heartbreaking to even stop playing as it has saved me from personal drama that I w",
+      "game": "Cookie Run: Kingdom",
+      "date": "2026-06-20",
+      "rating": 1
+    },
+    {
+      "id": "REV:50048c8d-8627-4d4d-822f-97d980356787",
+      "type": "review",
+      "label": null,
+      "snippet": "bhai mujhe support karo ek number Van ka game hai",
+      "game": "Cookie Run: Kingdom",
+      "date": "2026-07-01",
+      "rating": 5
+    },
+    {
+      "id": "REV:5e2071cf-ecb8-4fbe-9218-12c1f4eec4f4",
+      "type": "review",
+      "label": null,
+      "snippet": "can't even purchase cards support won't get back to me.",
+      "game": "Marvel Snap",
+      "date": "2026-03-28",
+      "rating": 1
+    },
+    {
+      "id": "REV:0d896ffd-b263-4574-94f8-9181da155064",
+      "type": "review",
+      "label": null,
+      "snippet": "One of the best card games around. As an avid TCG player I really enjoy the flow of the game. It also is NOT pay to win. That's just so refreshing in today's world! Wooow look at my initial review to ",
+      "game": "Marvel Snap",
+      "date": "2024-11-29",
+      "rating": 1
+    },
+    {
+      "id": "REV:675c6a3e-5939-4b94-b35a-a94bddb47247",
+      "type": "review",
+      "label": null,
+      "snippet": "The game is really fun and good. But support are dicks and do not care about glitches or supporting players.",
+      "game": "Marvel Snap",
+      "date": "2025-09-04",
+      "rating": 5
+    },
+    {
+      "id": "REV:f35a2afd-7ca7-4683-8213-b30163626c37",
+      "type": "review",
+      "label": null,
+      "snippet": "Support is non-existent. Game has become so unfriendly for new players. Pay to win for sure.",
+      "game": "Marvel Snap",
+      "date": "2024-11-26",
+      "rating": 1
+    },
+    {
+      "id": "REV:96f0199e-02f5-4f5e-a58e-01ba94fecdaf",
+      "type": "review",
+      "label": null,
+      "snippet": "lost all my cards and can't get any help on recovering the cards I paid for. the game does even show me any cards at all! the support is not good cause it's not helping me!",
+      "game": "Marvel Snap",
+      "date": "2025-05-06",
+      "rating": 1
+    },
+    {
+      "id": "REV:0540572e-b20e-4e83-b912-4e500e783a6a",
+      "type": "review",
+      "label": null,
+      "snippet": "Mobile UI is horrible. Support page is not optimized for mobile devices or at least my s24 ultra. you need to set aside 5 minutes for just pulling up the keyboard in the contact support page.",
+      "game": "Marvel Snap",
+      "date": "2026-07-15",
+      "rating": 1
+    }
+  ],
+  "sql": [],
+  "retrieved": [
+    {
+      "review_id": "70e43b09-94c6-4e8a-a539-9e8eb4f952e3",
+      "rank_score": 0.5,
+      "snippet": "Don't support, they're using AI art instead of supporting real artists. As a vet player and an artist myself, this is heartbreaking to even stop playing as it has saved me from personal drama that I w",
+      "game": "Cookie Run: Kingdom",
+      "date": "2026-06-20",
+      "rating": 1
+    },
+    {
+      "review_id": "50048c8d-8627-4d4d-822f-97d980356787",
+      "rank_score": 0.5,
+      "snippet": "bhai mujhe support karo ek number Van ka game hai",
+      "game": "Cookie Run: Kingdom",
+      "date": "2026-07-01",
+      "rating": 5
+    },
+    {
+      "review_id": "5e2071cf-ecb8-4fbe-9218-12c1f4eec4f4",
+      "rank_score": 0.37333333,
+      "snippet": "can't even purchase cards support won't get back to me.",
+      "game": "Marvel Snap",
+      "date": "2026-03-28",
+      "rating": 1
+    },
+    {
+      "review_id": "0d896ffd-b263-4574-94f8-9181da155064",
+      "rank_score": 0.33333334,
+      "snippet": "One of the best card games around. As an avid TCG player I really enjoy the flow of the game. It also is NOT pay to win. That's just so refreshing in today's world! Wooow look at my initial review to ",
+      "game": "Marvel Snap",
+      "date": "2024-11-29",
+      "rating": 1
+    },
+    {
+      "review_id": "675c6a3e-5939-4b94-b35a-a94bddb47247",
+      "rank_score": 0.25,
+      "snippet": "The game is really fun and good. But support are dicks and do not care about glitches or supporting players.",
+      "game": "Marvel Snap",
+      "date": "2025-09-04",
+      "rating": 5
+    },
+    {
+      "review_id": "f35a2afd-7ca7-4683-8213-b30163626c37",
+      "rank_score": 0.25,
+      "snippet": "Support is non-existent. Game has become so unfriendly for new players. Pay to win for sure.",
+      "game": "Marvel Snap",
+      "date": "2024-11-26",
+      "rating": 1
+    },
+    {
+      "review_id": "96f0199e-02f5-4f5e-a58e-01ba94fecdaf",
+      "rank_score": 0.2,
+      "snippet": "lost all my cards and can't get any help on recovering the cards I paid for. the game does even show me any cards at all! the support is not good cause it's not helping me!",
+      "game": "Marvel Snap",
+      "date": "2025-05-06",
+      "rating": 1
+    },
+    {
+      "review_id": "0540572e-b20e-4e83-b912-4e500e783a6a",
+      "rank_score": 0.2,
+      "snippet": "Mobile UI is horrible. Support page is not optimized for mobile devices or at least my s24 ultra. you need to set aside 5 minutes for just pulling up the keyboard in the contact support page.",
+      "game": "Marvel Snap",
+      "date": "2026-07-15",
+      "rating": 1
+    }
+  ],
+  "trace": [
+    {
+      "node": "plan",
+      "duration_ms": 3145,
+      "summary": "intent=analytics, tools=['docs']"
+    },
+    {
+      "node": "docs_tool",
+      "duration_ms": 20,
+      "summary": "Retrieved 8 documents (query='support')."
+    },
+    {
+      "node": "synthesize",
+      "duration_ms": 3806,
+      "summary": "Synthesized answer."
+    },
+    {
+      "node": "verify",
+      "duration_ms": 0,
+      "summary": "Verified findings: 4 kept, 0 dropped."
+    }
+  ],
+  "usage": {
+    "llm_calls": 2,
+    "prompt_tokens": 2491,
+    "completion_tokens": 817,
+    "latency_ms": 6951
+  },
+  "cached": false
+}

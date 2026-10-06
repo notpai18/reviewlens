@@ -253,3 +253,41 @@ def test_build_generator_from_settings(monkeypatch, tmp_path):
     finally:
         get_settings.cache_clear()
     assert isinstance(gen, SQLGenerator)
+
+
+@pytest.mark.asyncio
+async def test_sql_generate_guard_triggers_repair_for_small_sample_ranking(
+    fake_warehouse, tmp_path
+):
+    write_dummy_catalogs(tmp_path)
+    # Attempt 1 emits query without HAVING -> triggers guard
+    # Attempt 2 (repair) emits query with HAVING COUNT(*) >= 2 -> succeeds
+    llm = FakeLLM(
+        responses=[
+            '{"sql": "SELECT game, AVG(rating) as avg_r FROM reviews GROUP BY game ORDER BY avg_r ASC", "assumptions": []}',
+            '{"sql": "SELECT game, AVG(rating) as avg_r FROM reviews GROUP BY game HAVING COUNT(*) >= 2 ORDER BY avg_r ASC", "assumptions": [], "what_changed": "added HAVING"}',
+        ]
+    )
+    generator = _gen(fake_warehouse, tmp_path, llm)
+    result = await generator.run("What is the lowest rated game?")
+    assert result.success
+    assert len(result.attempts) == 2
+    assert result.attempts[0].status == "small_sample_guard"
+    assert "HAVING" in result.attempts[0].error
+    assert result.attempts[1].status == "success"
+
+
+@pytest.mark.asyncio
+async def test_sql_generate_guard_allows_order_by_count(fake_warehouse, tmp_path):
+    write_dummy_catalogs(tmp_path)
+    # Query ordering by COUNT(*) must not trigger guard
+    llm = FakeLLM(
+        responses=[
+            '{"sql": "SELECT game, COUNT(*) as c FROM reviews GROUP BY game ORDER BY c DESC", "assumptions": []}'
+        ]
+    )
+    generator = _gen(fake_warehouse, tmp_path, llm)
+    result = await generator.run("Which game has the most reviews?")
+    assert result.success
+    assert len(result.attempts) == 1
+    assert result.attempts[0].status == "success"

@@ -1,0 +1,162 @@
+{
+  "request_id": "c1fedcd9-6442-41ab-bd8b-e57becfadaea",
+  "answer_markdown": "Players of Marvel Snap express heavy dissatisfaction with customer support, citing unresponsiveness to reported issues, non-existent chat help, and poor mobile support page optimization. For Cookie Run: Kingdom, one reviewer advises others not to support the developers due to alleged AI art usage while another asks for support.\n\n**Findings**\n- *Players say:* In Cookie Run: Kingdom, a reviewer advises against supporting the game because they claim developers use AI art instead of supporting real artists. [REV:70e43b09-94c6-4e8a-a539-9e8eb4f952e3]\n- *Players say:* In Marvel Snap, a reviewer states they cannot purchase cards and that support will not get back to them. [REV:5e2071cf-ecb8-4fbe-9218-12c1f4eec4f4]\n- *Players say:* In Marvel Snap, several retrieved reviews mention that support is non-existent, unhelpful with glitches, and ignores repeatedly reported issues. [REV:0d896ffd-b263-4574-94f8-9181da155064] [REV:675c6a3e-5939-4b94-b35a-a94bddb47247] [REV:f35a2afd-7ca7-4683-8213-b30163626c37] [REV:7964a108-a035-45b5-bd73-ab299e6ea328]\n- *Players say:* In Marvel Snap, a reviewer states that the support page tells users to use the chat to resolve issues, but no one answers the chat messages. [REV:7964a108-a035-45b5-bd73-ab299e6ea328]\n- *Players say:* In Marvel Snap, a reviewer reports that the support page is not optimized for mobile devices and requires waiting just to pull up the keyboard. [REV:0540572e-b20e-4e83-b912-4e500e783a6a]\n\n**Caveats**\n- Findings are based on 7 distinct reviews.\n- Cited reviews cover: Cookie Run: Kingdom (1), Marvel Snap (6).\n- Rating distribution of cited reviews: 1\u2605: 6, 2\u2605: 0, 3\u2605: 0, 4\u2605: 0, 5\u2605: 1.\n\n**You could also ask**\n- What specific issues are Marvel Snap players trying to report to support?\n- How long do Marvel Snap players typically wait before concluding support is unresponsive?\n- Are there other reviews mentioning AI art use in Cookie Run: Kingdom?",
+  "answer": {
+    "summary": "Players of Marvel Snap express heavy dissatisfaction with customer support, citing unresponsiveness to reported issues, non-existent chat help, and poor mobile support page optimization. For Cookie Run: Kingdom, one reviewer advises others not to support the developers due to alleged AI art usage while another asks for support.",
+    "findings": [
+      {
+        "statement": "In Cookie Run: Kingdom, a reviewer advises against supporting the game because they claim developers use AI art instead of supporting real artists.",
+        "evidence_ids": [
+          "REV:70e43b09-94c6-4e8a-a539-9e8eb4f952e3"
+        ],
+        "kind": "player_feedback"
+      },
+      {
+        "statement": "In Marvel Snap, a reviewer states they cannot purchase cards and that support will not get back to them.",
+        "evidence_ids": [
+          "REV:5e2071cf-ecb8-4fbe-9218-12c1f4eec4f4"
+        ],
+        "kind": "player_feedback"
+      },
+      {
+        "statement": "In Marvel Snap, several retrieved reviews mention that support is non-existent, unhelpful with glitches, and ignores repeatedly reported issues.",
+        "evidence_ids": [
+          "REV:0d896ffd-b263-4574-94f8-9181da155064",
+          "REV:675c6a3e-5939-4b94-b35a-a94bddb47247",
+          "REV:f35a2afd-7ca7-4683-8213-b30163626c37",
+          "REV:7964a108-a035-45b5-bd73-ab299e6ea328"
+        ],
+        "kind": "player_feedback"
+      },
+      {
+        "statement": "In Marvel Snap, a reviewer states that the support page tells users to use the chat to resolve issues, but no one answers the chat messages.",
+        "evidence_ids": [
+          "REV:7964a108-a035-45b5-bd73-ab299e6ea328"
+        ],
+        "kind": "player_feedback"
+      },
+      {
+        "statement": "In Marvel Snap, a reviewer reports that the support page is not optimized for mobile devices and requires waiting just to pull up the keyboard.",
+        "evidence_ids": [
+          "REV:0540572e-b20e-4e83-b912-4e500e783a6a"
+        ],
+        "kind": "player_feedback"
+      }
+    ],
+    "caveats": [
+      "Findings are based on 7 distinct reviews.",
+      "Cited reviews cover: Cookie Run: Kingdom (1), Marvel Snap (6).",
+      "Rating distribution of cited reviews: 1\u2605: 6, 2\u2605: 0, 3\u2605: 0, 4\u2605: 0, 5\u2605: 1."
+    ],
+    "followups": [
+      "What specific issues are Marvel Snap players trying to report to support?",
+      "How long do Marvel Snap players typically wait before concluding support is unresponsive?",
+      "Are there other reviews mentioning AI art use in Cookie Run: Kingdom?"
+    ]
+  },
+  "citations": [
+    {
+      "id": "REV:70e43b09-94c6-4e8a-a539-9e8eb4f952e3",
+      "type": "review",
+      "label": null,
+      "snippet": "Don't support, they're using AI art instead of supporting real artists. As a vet player and an artist myself, this is heartbreaking to even stop playing as it has saved me from personal drama that I w",
+      "game": "Cookie Run: Kingdom",
+      "date": "2026-06-20",
+      "rating": 1
+    },
+    {
+      "id": "REV:5e2071cf-ecb8-4fbe-9218-12c1f4eec4f4",
+      "type": "review",
+      "label": null,
+      "snippet": "can't even purchase cards support won't get back to me.",
+      "game": "Marvel Snap",
+      "date": "2026-03-28",
+      "rating": 1
+    },
+    {
+      "id": "REV:0d896ffd-b263-4574-94f8-9181da155064",
+      "type": "review",
+      "label": null,
+      "snippet": "One of the best card games around. As an avid TCG player I really enjoy the flow of the game. It also is NOT pay to win. That's just so refreshing in today's world! Wooow look at my initial review to ",
+      "game": "Marvel Snap",
+      "date": "2024-11-29",
+      "rating": 1
+    },
+    {
+      "id": "REV:675c6a3e-5939-4b94-b35a-a94bddb47247",
+      "type": "review",
+      "label": null,
+      "snippet": "The game is really fun and good. But support are dicks and do not care about glitches or supporting players.",
+      "game": "Marvel Snap",
+      "date": "2025-09-04",
+      "rating": 5
+    },
+    {
+      "id": "REV:f35a2afd-7ca7-4683-8213-b30163626c37",
+      "type": "review",
+      "label": null,
+      "snippet": "Support is non-existent. Game has become so unfriendly for new players. Pay to win for sure.",
+      "game": "Marvel Snap",
+      "date": "2024-11-26",
+      "rating": 1
+    },
+    {
+      "id": "REV:7964a108-a035-45b5-bd73-ab299e6ea328",
+      "type": "review",
+      "label": null,
+      "snippet": "The support is STILL garbage. Went to report an issue, the support page tells you to use the chat to best resolve this issue, and then no one answers your chat message.. how incredibly worthless of yo",
+      "game": "Marvel Snap",
+      "date": "2025-09-23",
+      "rating": 1
+    },
+    {
+      "id": "REV:0540572e-b20e-4e83-b912-4e500e783a6a",
+      "type": "review",
+      "label": null,
+      "snippet": "Mobile UI is horrible. Support page is not optimized for mobile devices or at least my s24 ultra. you need to set aside 5 minutes for just pulling up the keyboard in the contact support page.",
+      "game": "Marvel Snap",
+      "date": "2026-07-15",
+      "rating": 1
+    }
+  ],
+  "sql": [],
+  "retrieved": [
+    {
+      "review_id": "50048c8d-8627-4d4d-822f-97d980356787",
+      "rank_score": 0.5,
+      "snippet": "bhai mujhe support karo ek number Van ka game hai",
+      "game": "Cookie Run: Kingdom",
+      "date": "2026-07-01",
+      "rating": 5
+    }
+  ],
+  "trace": [
+    {
+      "node": "plan",
+      "duration_ms": 2436,
+      "summary": "intent=analytics, tools=['docs']"
+    },
+    {
+      "node": "docs_tool",
+      "duration_ms": 11,
+      "summary": "Retrieved 8 documents (query='support')."
+    },
+    {
+      "node": "synthesize",
+      "duration_ms": 4314,
+      "summary": "Synthesized answer."
+    },
+    {
+      "node": "verify",
+      "duration_ms": 0,
+      "summary": "Verified findings: 5 kept, 0 dropped."
+    }
+  ],
+  "usage": {
+    "llm_calls": 2,
+    "prompt_tokens": 2517,
+    "completion_tokens": 913,
+    "latency_ms": 6750
+  },
+  "cached": false
+}

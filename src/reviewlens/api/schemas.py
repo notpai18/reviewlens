@@ -41,9 +41,14 @@ class SQLInfo(BaseModel):
 
 
 class RetrievedInfo(BaseModel):
+    """A retrieved review that no finding cites."""
+
     review_id: str
-    score: float
+    rank_score: float = 0.0
     snippet: str
+    game: str | None = None
+    date: str | None = None
+    rating: int | None = None
 
 
 class AskResponse(BaseModel):

@@ -304,6 +304,7 @@ async def run_e2e_eval(
     games: list[str],
     settings: Any,
     limit: int | None = None,
+    runs: int = 1,
 ) -> dict[str, Any]:
     """Run E2E evaluation on golden questions."""
     import time
@@ -319,21 +320,22 @@ async def run_e2e_eval(
     secrets = [s for s in [settings.gemini_api_key, settings.qdrant_api_key] if s]
 
     results = []
-    print(f"Running E2E evaluation on {len(questions)} golden questions...")
+    print(f"Running E2E evaluation on {len(questions)} golden questions ({runs} run(s) each)...")
     for q in questions:
         qid = q["id"]
         q_text = q["question"]
         print(f"  [{qid}] ({q.get('category')}) {q_text[:60]}...", flush=True)
-        ctx = make_context(components, settings)
-        t0 = time.perf_counter()
-        try:
-            state = await run_question(ctx, q_text)
-            latency = time.perf_counter() - t0
-        except Exception as exc:
-            latency = time.perf_counter() - t0
-            state = {"error": str(exc)}
-        res = check_e2e_result(q, state, secrets, latency)
-        results.append(res)
+        for _ in range(runs):
+            ctx = make_context(components, settings)
+            t0 = time.perf_counter()
+            try:
+                state = await run_question(ctx, q_text)
+                latency = time.perf_counter() - t0
+            except Exception as exc:
+                latency = time.perf_counter() - t0
+                state = {"error": str(exc)}
+            res = check_e2e_result(q, state, secrets, latency)
+            results.append(res)
 
     metrics = compute_e2e_metrics(results)
     return metrics.to_dict()
@@ -445,6 +447,7 @@ async def _async_main(args: argparse.Namespace) -> None:
             golden_path=golden_path,
             games=games,
             settings=settings,
+            runs=args.runs,
         )
         metrics_out["e2e"] = e2e_metrics
         print("\nE2E Metrics:")
